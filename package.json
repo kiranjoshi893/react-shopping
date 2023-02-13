@@ -1,0 +1,32 @@
+{
+  "name": "react-ts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.2",
+    "bootstrap": "^5.2.3",
+    "env-cmd": "^10.1.0",
+    "react": "^18.1.0",
+    "react-bootstrap": "^2.7.1",
+    "react-dom": "^18.1.0",
+    "react-router": "^6.8.1",
+    "react-router-dom": "^6.8.1",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "start-qa": "env-cmd -f .env.qa react-scripts start",
+    "build-qa": "env-cmd -f .env.qa react-scripts build",
+    "start-prod": "env-cmd -f .env.prod react-scripts start",
+    "build-prod": "env.cmd -f .env.prod react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  }
+}
