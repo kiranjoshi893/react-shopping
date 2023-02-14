@@ -1,41 +1,10 @@
-import {
-  DECREMENT,
-  INCREMENT,
-  PRODUCTLIST,
-  REMOVELIST,
-  TOGGLELIST,
-} from '../constants/ActionType';
+import {LOGIN} from '../constant/ActionType';
 
-export const ProductAction = (val) => {
-  // localStorage.setItem("Products", JSON.stringify(val));
+export const LoginAction = (params) => {
+  // localStorage.setItem("accessToken", JSON.stringify(params.accessToken));
+  console.log(params, 'loginAction')
   return {
-    type: PRODUCTLIST,
-    payload: val,
-  };
-};
-export const IncrementAction = (val) => {
-  console.log(val, 'dfsfsfsfsdfsdf');
-  return {
-    type: INCREMENT,
-    payload: val,
-  };
-};
-export const DecrementAction = (val) => {
-  return {
-    type: DECREMENT,
-    payload: val,
-  };
-};
-export const ToggleAction = (val) => {
-  return {
-    type: TOGGLELIST,
-    payload: val,
-  };
-};
-
-export const RemoveListAction = (val) => {
-  return {
-    type: REMOVELIST,
-    payload: val,
+    type: LOGIN,
+    payload: params,
   };
 };

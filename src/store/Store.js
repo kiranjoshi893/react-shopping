@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { ListReducer, ProductReducer } from '../reducers/Reducer';
+import { LoginReducer} from '../reducer/Reducer';
 
 const rootReducer = combineReducers({
-  ProductStore: ProductReducer,
-  ListStore: ListReducer,
+  LoginStore: LoginReducer,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const allStore = createStore(
+export const Store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunkMiddleware))
 );
