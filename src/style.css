@@ -1,8 +1,21 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 :root{
   --main-color:#f91942
 }
-body{font-family: Arial, Helvetica, sans-serif;}
+body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gray);}
+.yellow{color: #ffa900;}
+.navbar {
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 8%);
+}
+.navbar-brand {
+  font-size: 1.75rem;
+  font-weight: 800;
+} 
+.nav-link {
+  font-size: 1.1rem;
+  padding: 0rem 1rem !important;
+}
 .login-wrapper{
   max-width: 400px;
   margin: auto;
@@ -75,7 +88,15 @@ body{font-family: Arial, Helvetica, sans-serif;}
     opacity: 0;
   }
 }
-
-/* a, button, img, input, span {
-  transition: all .3s ease 0s;
-} */
+.product-wrap {
+  position: relative;
+  /* background: #f6f6f6; */
+  color: var(--bs-black);
+}
+.product-wrap a {
+  color: var(--black);
+  text-decoration: none;
+}
+.product-content {
+  padding: 1rem 2rem;
+}

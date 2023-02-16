@@ -26,10 +26,10 @@ export default function App(props) {
       <Routes>
         <Route exact path='/' element={<PrivateRoute/>}>
           <Route exact path='/' element={<Home/>}/>
+          <Route path="/products" exact element={<Products />} />
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
-        <Route path="/products" exact element={<Products />} />
         {/* <Route path="/admin/create" exact element={<CreateList />} /> */}
         {/* <Route exact path='/' element={<ProtectedRoute Component={Home} />} /> */}
       </Routes>

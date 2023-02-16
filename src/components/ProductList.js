@@ -1,13 +1,15 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { AllProductList } from '../action/Action';
+import { Start, StartO } from '../common/Common';
 import { getAllProduct } from '../services/Auth';
 // import {db} from '../firebase';
 // import {collection, doc, setDoc, addDoc, updateDoc, deleteDoc, getDoc, getDocs, where, query } from 'firebase/firestore';
 
  const ProductList = () => {
     const getProductList = useSelector((state) => state)
-    console.log(getProductList, 'getProductList')
+    console.log(getProductList.AllProductStore.productList, 'getProductList1111')
     const dispatch= useDispatch()
     const storeProductList = (data) => dispatch(AllProductList(data))
     // const [getData, setGetData] = useState([])
@@ -33,50 +35,36 @@ import { getAllProduct } from '../services/Auth';
     }, [])
 
     return (
-        <div className="col-md-4">
-        <div className="product-wrap mb-25">
-            <div className="product-img">
-                <a href="/product/1">
-                <img className="default-img" src="/assets/img/product/fashion/1.jpg" alt="" />
-                <img className="hover-img" src="/assets/img/product/fashion/3.jpg" alt="" />
-                </a>
-                <div className="product-img-badges">
-                <span className="pink">-10%</span>
+        <>{getProductList?.AllProductStore?.productList?.map((data) => {
+            return (
+                <div className="col-md-4 mb-4 pb-3" key={data.id}>
+                    <div className="product-wrap mb-25">
+                        <div className="product-img">
+                            <Link href="/product/1">
+                                <img className="w-100" src={data.images[0]} alt="" />
+                            </Link>
+                        </div>
+                        <div className="product-content text-center">
+                            <h5 className='font-weight-bold mb-3'>
+                                <Link to="/product/1">{data.title}</Link>
+                            </h5>
+                            <div className="product-rating">
+                                <StartO className="yellow me-2"/>
+                                <StartO className="yellow me-2"/>
+                                <StartO className="yellow me-2"/>
+                                <StartO className="yellow me-2"/>
+                                <Start className="me-2" />
+                            </div>
+                            <div className="product-price mt-3">
+                                <h5>${data.price}</h5>
+                                <span className="old">{data.category.name}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="product-action">
-                <div className="pro-same-action pro-wishlist">
-                    <button className="" title="Add to wishlist">
-                    <i className="pe-7s-like"></i>
-                    </button>
-                </div>
-                <div className="pro-same-action pro-cart">
-                    <a href="/product/1">Select Option</a>
-                </div>
-                <div className="pro-same-action pro-quickview">
-                    <button title="Quick View">
-                    <i className="pe-7s-look"></i>
-                    </button>
-                </div>
-                </div>
-            </div>
-            <div className="product-content text-center">
-                <h3>
-                <a href="/product/1">Lorem ipsum jacket</a>
-                </h3>
-                <div className="product-rating">
-                <i className="fa fa-star-o yellow"></i>
-                <i className="fa fa-star-o yellow"></i>
-                <i className="fa fa-star-o yellow"></i>
-                <i className="fa fa-star-o yellow"></i>
-                <i className="fa fa-star-o"></i>
-                </div>
-                <div className="product-price">
-                <span>€11.2</span>
-                <span className="old">€12.45</span>
-                </div>
-            </div>
-            </div>
-        </div>
+            )
+            })}
+        </>
     )
  }
 

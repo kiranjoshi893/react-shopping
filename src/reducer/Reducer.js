@@ -1,13 +1,14 @@
 import {ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, LOGIN} from '../constant/ActionType';
+console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
   isLogin:auth ? true : false,
   accessToken:'',
 }
 const allProduct = {
-  prouctList : [],
+  productList : [],
   productError: '',
-  prouctListWait: false
+  productListWait: false
 }
 export const LoginReducer = (state = loginDetails, action) => {
   console.log(action, 'LoginReducer')
@@ -32,7 +33,7 @@ export const AllProductReducer = (state = allProduct, action) => {
     case ALL_PRODUCTS:
     return {
       ...state,
-      prouctList:action.payload
+      productList:action.payload
     }
     case ALL_PRODUCTS_ERROR:
       return{
@@ -42,7 +43,7 @@ export const AllProductReducer = (state = allProduct, action) => {
     case ALL_PRODUCTS_WAIT:
       return {
         ...state,
-        prouctListWait : action.payload
+        productListWait : action.payload
       }
     default: {
       return {

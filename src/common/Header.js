@@ -1,32 +1,33 @@
 import React from 'react'
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function Header() {
+  const dispatch = useDispatch()
+  const getState = ((state) => state.LoginStore.isLogin)
   return (
-    <Navbar bg="light" expand="lg" className='mb-4'>
+    <Navbar bg="white py-3" expand="lg" className='mb-4'>
       <div className="container">
-        <Navbar.Brand>Dummy</Navbar.Brand>
+        <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link className='nav-link' to="/">Home</Link>
             <Link className='nav-link' to="/products">Products</Link>
-            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
+            <Link className='nav-link' to="/products">Mens</Link>
+            <Link className='nav-link' to="/products">Womens</Link>
+            <Link className='nav-link' to="/products">Kids</Link>
           </Nav>
           <Nav className="ms-auto">
-            <Link className='nav-link' to="/login">Login</Link>
-            <Link className='nav-link' to="/signup">SignUp</Link>
+            {!getState ? 
+              <>
+                <Link className='nav-link' to="/login">Login</Link>
+                <Link className='nav-link' to="/signup">SignUp</Link>
+              </> 
+               :
+               <Link className='nav-link' to="/login">Logout</Link>
+            }
           </Nav>
         </Navbar.Collapse>
       </div>
