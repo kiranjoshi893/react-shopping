@@ -56,7 +56,6 @@ const Login = (props) => {
                 setDisableButton(false)
                 loginHandler(res.user)
                 // console.log(res.user)
-                alert('test')
                 navigate('/')
                 
             }).catch((error) => {

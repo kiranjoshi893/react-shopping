@@ -1,24 +1,54 @@
-import {LOGIN} from '../constant/ActionType';
+import {ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, LOGIN} from '../constant/ActionType';
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
   isLogin:auth ? true : false,
-  accessToken:''
+  accessToken:'',
 }
-
+const allProduct = {
+  prouctList : [],
+  productError: '',
+  prouctListWait: false
+}
 export const LoginReducer = (state = loginDetails, action) => {
-  // alert('test')
   console.log(action, 'LoginReducer')
+  // localStorage.setItem("accessToken", JSON.stringify(action.payload.stsTokenManager.accessToken)),
   switch (action.type){
     case LOGIN: 
+    let getToken = action.payload.stsTokenManager.accessToken
+    localStorage.setItem('accessToken', JSON.stringify(getToken))
     return {
       ...state,
-      accessToken: localStorage.setItem("accessToken", JSON.stringify(action.payload.stsTokenManager.accessToken)),
+      accessToken: action.payload.stsTokenManager.accessToken,
       isLogin: localStorage.getItem('accessToken') ? true : false
     }
     default : 
       return {
         ...state
       }
+  }
+}
+export const AllProductReducer = (state = allProduct, action) => {
+  switch (action.type){
+    case ALL_PRODUCTS:
+    return {
+      ...state,
+      prouctList:action.payload
+    }
+    case ALL_PRODUCTS_ERROR:
+      return{
+        ...state,
+        productError:action.payload
+      }
+    case ALL_PRODUCTS_WAIT:
+      return {
+        ...state,
+        prouctListWait : action.payload
+      }
+    default: {
+      return {
+        ...state
+      }
+    }
   }
 }
 

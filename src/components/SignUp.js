@@ -1,10 +1,12 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const SignUp = (props) => {
+    const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const navigate = useNavigate()
     const [inputValue, setInputValue] = useState({
         name:'',
@@ -72,6 +74,11 @@ const SignUp = (props) => {
             })
         }
     }
+    useEffect(() => {
+        if(isLogin){
+            navigate(-1)
+        }
+    }, []);
     return (
         <div className='login-wrapper'>
             <div className='w-100'>

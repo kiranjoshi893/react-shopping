@@ -8,9 +8,11 @@ import Home from './components/Home';
 import { Outlet } from 'react-router';
 import ProtectedRoute from './common/ProtectedRoute';
 import { useSelector } from 'react-redux';
+import Products from './components/Products';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
+  console.log(process.env.REACT_APP_PROJECT_ENV, "asdasd");
   const getState = useSelector((state) => state.LoginStore.isLogin)
   console.log(getState,  'getState')
   const PrivateRoute = () => {
@@ -27,6 +29,8 @@ export default function App(props) {
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
+        <Route path="/products" exact element={<Products />} />
+        {/* <Route path="/admin/create" exact element={<CreateList />} /> */}
         {/* <Route exact path='/' element={<ProtectedRoute Component={Home} />} /> */}
       </Routes>
     </BrowserRouter>
