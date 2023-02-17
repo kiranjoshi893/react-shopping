@@ -17,7 +17,7 @@ import ProductList from './ProductList';
         console.log(navigate, 'navigation')
     },[])
     return <div>
-        <BreadcrumbList data={navigate}/>
+        <BreadcrumbList url={navigate}/>
         <div className='container'>
             {getProductList.AllProductStore.productListWait ? <Loader /> : ''}
             <div className='row'>
