@@ -16,7 +16,7 @@
 .env.dev
 .env.prod
 .env.qa
-firebase.js
+# firebase.js
 
 
 Services.js
