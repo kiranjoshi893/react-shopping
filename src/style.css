@@ -14,8 +14,28 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
 } 
 .nav-link {
   font-size: 1.1rem;
-  padding: 0rem 1rem !important;
+  padding: 1rem 1rem !important;
+  color: var(--bs-nav-link-color);
 }
+.navbar-nav .show>.nav-link{ color: var(--bs-nav-link-color);}
+.navbar-nav .dropdown-menu {
+  border: none;
+  padding: 1rem 0rem;
+  box-shadow: 0px 0px 10px rgb(0 0 0 / 8%);
+  border-radius: 0;
+  min-width: 250px;
+  margin-top: .25rem;
+  display: block !important;
+  opacity: 0;
+  transition: 0.3s ease;
+  visibility: hidden;
+  transform: translateY(15px);
+}
+.navbar-nav .dropdown-menu .nav-link {
+  padding: 0.6rem 1.5rem !important;
+}
+.navbar-nav .dropdown-menu .nav-link:hover {color: var(--main-color);}
+.navbar-nav .dropdown:hover .dropdown-menu{opacity: 1;visibility: visible;transform: translateY(0px);}
 .login-wrapper{
   max-width: 400px;
   margin: auto;
@@ -99,4 +119,14 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
 }
 .product-content {
   padding: 1rem 2rem;
+}
+.breadcrumb-custom {
+  background: #f7f8fa;
+}
+.breadcrumb-custom li > a {
+  color: var(--c-gray);
+  text-decoration: none;
+}
+.breadcrumb-custom .breadcrumb {
+  margin-bottom: 0;
 }

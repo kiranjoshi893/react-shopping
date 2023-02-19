@@ -9,6 +9,8 @@ import { Outlet } from 'react-router';
 import ProtectedRoute from './common/ProtectedRoute';
 import { useSelector } from 'react-redux';
 import Products from './components/Products';
+import NavigationRoutes from './common/NavigationRoutes';
+import ProductDetails from './components/ProductDetails';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
@@ -25,8 +27,10 @@ export default function App(props) {
       <Header />
       <Routes>
         <Route exact path='/' element={<PrivateRoute/>}>
-          <Route exact path='/' element={<Home/>}/>
-          <Route path="/products" exact element={<Products />} />
+          {NavigationRoutes.map((data) => {
+            return <Route key={data.name} exact path={data.path} element={data.Component}/>
+          })}
+          <Route path="/products/:id" element={<ProductDetails />}/>
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
