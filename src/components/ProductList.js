@@ -1,15 +1,17 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Start, StartO } from '../common/Svg';
 
 
  const ProductList = (props) => {
+    const navigate = useLocation()
     const getData = props.data
     console.log(getData, 'props::::::::::')
     return (
         <div className="product-wrap mb-25" key={getData.id}>
             <div className="product-img">
-                <Link href="/product/1">
+                <p>{getData.id} ddf</p>
+                <Link to={`${navigate.pathname}/${getData.id}`}>
                     <img className="w-100" src={getData.images[0]} alt="" />
                 </Link>
             </div>
