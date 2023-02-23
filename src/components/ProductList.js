@@ -1,19 +1,23 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Start, StartO } from '../common/Svg';
 
 
  const ProductList = (props) => {
-    const navigate = useLocation()
+    const location = useLocation()
+    const navigate = useNavigate()
     const getData = props.data
     console.log(getData, 'props::::::::::')
+    const goToDetailPage = (data) => {
+        navigate(`${data.id}`, {state:data})
+    }
     return (
         <div className="product-wrap mb-25" key={getData.id}>
             <div className="product-img">
-                <p>{getData.id} ddf</p>
-                <Link to={`${navigate.pathname}/${getData.id}`}>
+                {/* <Link to={`${location.pathname}/${getData.id}`}></Link> */}
+                <span className='cursor-pointer' onClick={() => goToDetailPage(getData)}>
                     <img className="w-100" src={getData.images[0]} alt="" />
-                </Link>
+                </span>
             </div>
             <div className="product-content text-center">
                 <h5 className='font-weight-bold mb-3'>
