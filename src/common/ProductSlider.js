@@ -4,12 +4,15 @@ import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
 const ProductSlider = (props) => {
+  console.log(props, '345678')
+  const {images} = props
+  console.log(images, '345678')
   const baseUrl  = 'https://api.lorem.space/image/shoes'
   const settings = {
     customPaging: function(i) {
       return (
         <a>
-          <img src={`${baseUrl}/abstract0${i + 1}.jpg`} />
+          <img src={`${images[i ]}`} />
         </a>
       );
     },
@@ -23,18 +26,10 @@ const ProductSlider = (props) => {
     return(
         <div>
             <Slider {...settings}>
-          <div>
-            <img src={baseUrl + "?w=640&h=480&r=6649"} />
-          </div>
-          <div>
-            <img src={baseUrl + "?w=640&h=480&r=6376"} />
-          </div>
-          <div>
-            <img src={baseUrl + "?w=640&h=480&r=5200"} />
-          </div>
-          <div>
-            <img src={baseUrl + "w=640&h=480&r=2555"} />
-          </div>
+          {images.map((data, index) => {
+            return <div key={index}><img src={data} /></div>
+            
+          })}
         </Slider>
         </div>
     )

@@ -1,4 +1,4 @@
-import {ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, LOGIN} from '../constant/ActionType';
+import {ADD_ITEMS_TO_CART, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, LOGIN} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
@@ -7,9 +7,15 @@ const loginDetails = {
 }
 const allProduct = {
   productList : [],
+  productList1 : [],
   productError: '',
-  productListWait: false
+  productListWait: false,
+  cartItem: ''
 }
+const cartItems = {
+  cartList : []
+}
+const tttt = ''
 export const LoginReducer = (state = loginDetails, action) => {
   console.log(action, 'LoginReducer')
   // localStorage.setItem("accessToken", JSON.stringify(action.payload.stsTokenManager.accessToken)),
@@ -33,7 +39,11 @@ export const AllProductReducer = (state = allProduct, action) => {
     case ALL_PRODUCTS:
     return {
       ...state,
-      productList:action.payload
+      // productList:action.payload,
+      productList: action.payload?.map(el => ({
+        ...el,
+        qty: 10
+    }))
     }
     case ALL_PRODUCTS_ERROR:
       return{
@@ -50,6 +60,19 @@ export const AllProductReducer = (state = allProduct, action) => {
         ...state
       }
     }
+  }
+}
+export const AddItemToCartReducer = (state = cartItems, action) =>{
+  switch (action.type){
+    case ADD_ITEMS_TO_CART:
+      return{
+        ...state,
+        cartList: action.payload
+      }
+      default: 
+      return{
+        ...state
+      }
   }
 }
 
