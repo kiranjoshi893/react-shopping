@@ -1,4 +1,4 @@
-import {ADD_ITEMS_TO_CART, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, LOGIN} from '../constant/ActionType';
+import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, LOGIN} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
@@ -10,12 +10,15 @@ const allProduct = {
   productList1 : [],
   productError: '',
   productListWait: false,
-  cartItem: ''
+  cartItem: '',
+  qty:10
 }
-const cartItems = {
-  cartList : []
+const productQty = {
+  product:'',
+  productTest:'',
+  cartQTY: 1,
+  inputQty: ''
 }
-const tttt = ''
 export const LoginReducer = (state = loginDetails, action) => {
   console.log(action, 'LoginReducer')
   // localStorage.setItem("accessToken", JSON.stringify(action.payload.stsTokenManager.accessToken)),
@@ -42,7 +45,7 @@ export const AllProductReducer = (state = allProduct, action) => {
       // productList:action.payload,
       productList: action.payload?.map(el => ({
         ...el,
-        qty: 10
+        qty: 1,
     }))
     }
     case ALL_PRODUCTS_ERROR:
@@ -62,17 +65,39 @@ export const AllProductReducer = (state = allProduct, action) => {
     }
   }
 }
-export const AddItemToCartReducer = (state = cartItems, action) =>{
+export const AddItemToCartReducer = (state = productQty, action) => {
+  console.log(action.payload, 'action::::::::')
   switch (action.type){
-    case ADD_ITEMS_TO_CART:
+    case CART_ITEM:
       return{
         ...state,
-        cartList: action.payload
+        product:action.payload,
+        cartQTY:state.cartQTY,
+        
       }
-      default: 
+    case INCREASE_QTY:
       return{
-        ...state
+        ...state,
+        cartQTY:state.cartQTY >= 10 ? 10 : state.cartQTY + 1
       }
+      case DECREASE_QTY:
+      return{
+        ...state,
+        cartQTY:state.cartQTY <= 1 ? 10 : state.cartQTY - 1
+      }
+      case CHANGE_QTY:
+      return{
+        ...state,
+        inputQty:action.payload
+      }
+      case ADD_TO_CART:
+      return{
+        ...state,
+      }
+      default:
+        return{
+          ...state
+        }
   }
 }
 
