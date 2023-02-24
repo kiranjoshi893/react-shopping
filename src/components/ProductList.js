@@ -9,7 +9,9 @@ import { Start, StartO } from '../common/Svg';
     const getData = props.data
     console.log(getData, 'props::::::::::')
     const goToDetailPage = (data) => {
-        navigate(`${data.id}`, {state:data})
+        const filtertedURL = data.title.split(' ').join('-')
+        console.log(filtertedURL, 'filtertedURL')
+        navigate(`${filtertedURL}`, {state:data})
     }
     return (
         <div className="product-wrap mb-25" key={getData.id}>
@@ -21,7 +23,7 @@ import { Start, StartO } from '../common/Svg';
             </div>
             <div className="product-content text-center">
                 <h5 className='font-weight-bold mb-3'>
-                    <Link to="/product/1">{getData.title}</Link>
+                    <Link to="/">{getData.title}</Link>
                 </h5>
                 <div className="product-rating">
                     <StartO className="yellow me-2"/>

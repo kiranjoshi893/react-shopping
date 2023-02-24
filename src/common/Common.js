@@ -16,11 +16,12 @@ export const BreadcrumbList = (props) => {
           {pathnames.map((data, index) => {
             console.log(index, 'index')
             const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+            const filteredURL = data.split('-').join(' ');
             const isLast = index === pathnames.length - 1;
-            console.log(isLast, routeTo, 'routeTo')
-            return isLast ? (<li key={data} className='breadcrumb-item'><span>{data}</span></li>)
+            console.log(isLast, filteredURL, 'routeTo')
+            return isLast ? (<li key={data} className='breadcrumb-item'><span>{filteredURL}</span></li>)
               : 
-              <li key={data} className='breadcrumb-item'><Link to={routeTo}>{data}</Link></li>
+              <li key={data} className='breadcrumb-item'><Link to={routeTo}>{filteredURL}</Link></li>
               }
             )}
         </Breadcrumb>
