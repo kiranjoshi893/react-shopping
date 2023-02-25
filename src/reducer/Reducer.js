@@ -14,7 +14,7 @@ const allProduct = {
   qty:10
 }
 const productQty = {
-  product:'',
+  product:[],
   productTest:'',
   cartQTY: 1,
   inputQty: ''
@@ -71,8 +71,8 @@ export const AddItemToCartReducer = (state = productQty, action) => {
     case CART_ITEM:
       return{
         ...state,
-        product:action.payload,
-        cartQTY:state.cartQTY,
+        // product:action.payload,
+        // cartQTY:state.cartQTY,
         
       }
     case INCREASE_QTY:
@@ -93,6 +93,8 @@ export const AddItemToCartReducer = (state = productQty, action) => {
       case ADD_TO_CART:
       return{
         ...state,
+        product:action.payload,
+        cartQTY:state.cartQTY,
       }
       default:
         return{
