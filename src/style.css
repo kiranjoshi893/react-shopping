@@ -23,6 +23,17 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
   padding: 1rem 1rem !important;
   color: var(--bs-nav-link-color);
 }
+.nav-link small{
+  font-size: 10px !important;
+  padding: 4px 6px 3px 6px;
+  position: relative;
+  vertical-align: super;
+}
+.nav-link svg {
+  width: auto;
+  height: 24px;
+  display: initial;
+}
 .navbar-nav .show>.nav-link{ color: var(--bs-nav-link-color);}
 .navbar-nav .dropdown-menu {
   border: none;
@@ -118,6 +129,11 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
   position: relative;
   /* background: #f6f6f6; */
   color: var(--bs-black);
+}
+.product-wrap h5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product-wrap a {
   color: var(--black);

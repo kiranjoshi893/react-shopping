@@ -3,6 +3,7 @@ import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import NavigationRoutes from './NavigationRoutes'
+import { BagIcon } from './Svg'
 
 function Header() {
   console.log(NavigationRoutes, 'NavigationRoutes')
@@ -39,7 +40,10 @@ function Header() {
                 <Link className='nav-link' to="/signup">SignUp</Link>
               </> 
                :
+               <>
+               <Link className='nav-link' to="/login"><BagIcon /><small class="badge rounded-pill bg-danger">1</small></Link>
                <Link className='nav-link' to="/login">Logout</Link>
+               </>
             }
           </Nav>
         </Navbar.Collapse>

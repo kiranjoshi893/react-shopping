@@ -14,8 +14,8 @@ const allProduct = {
   qty:10
 }
 const productQty = {
-  product:'',
-  productTest:'',
+  productWithID:'',
+  product:[],
   cartQTY: 1,
   inputQty: ''
 }
@@ -66,14 +66,13 @@ export const AllProductReducer = (state = allProduct, action) => {
   }
 }
 export const AddItemToCartReducer = (state = productQty, action) => {
-  console.log(action.payload, 'action::::::::')
   switch (action.type){
     case CART_ITEM:
+      console.log(allProduct , 'action::::::::')
       return{
         ...state,
-        product:action.payload,
-        cartQTY:state.cartQTY,
-        
+        productWithID:action.payload,   
+        product:state.productList     
       }
     case INCREASE_QTY:
       return{
@@ -93,6 +92,8 @@ export const AddItemToCartReducer = (state = productQty, action) => {
       case ADD_TO_CART:
       return{
         ...state,
+        product:allProduct.productList,
+        cartQTY:state.cartQTY,
       }
       default:
         return{
