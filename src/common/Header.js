@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { ItemRemoveToCart } from '../action/Action'
 import NavigationRoutes from './NavigationRoutes'
+import { BagIcon, CloseIcon } from './Svg'
 
 function Header() {
-  console.log(NavigationRoutes, 'NavigationRoutes')
+  const getDataFromStore = useSelector(state => state.ItemAddTOCart)
+  const dispatch = useDispatch()
+  const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
+  const {items} = getDataFromStore
+  // console.log(items, 'getDataFromStore')
+  const cartList = JSON.parse(localStorage.getItem('cartList')) ? JSON.parse(localStorage.getItem('cartList')) : [] 
+  console.log(cartList, 'NavigationRoutes')
   const getState = ((state) => state.LoginStore.isLogin)
   const [show, setShow] = useState(true)
   return (
@@ -39,7 +47,33 @@ function Header() {
                 <Link className='nav-link' to="/signup">SignUp</Link>
               </> 
                :
+               <>
+               {console.log(cartList.length,'cartList.length')}
+               {cartList.length === 0 ? 
+               <span className='cursor-pointer nav-link'><BagIcon /></span>
+               : 
+               <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{cartList.length}</small></>} id="basic-nav-dropdown" >
+                <div className='cart-dropdown-list'>
+                  {cartList.map((data) => {
+                    return (
+                      <div key={data.id} className='cart-sublist'>
+                        <div>
+                          <img src={data.images[0]}  />
+                        </div>
+                        <div>
+                          <p className='fw-bold mb-0'>{data.title}</p>
+                          <p className="text-secondary">{data.qty}</p>
+                        </div>
+                        <div className='text-danger cursor-pointer'onClick={() => removeItemsToCart(data)}><CloseIcon /></div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </NavDropdown>
+               }
+
                <Link className='nav-link' to="/login">Logout</Link>
+               </>
             }
           </Nav>
         </Navbar.Collapse>

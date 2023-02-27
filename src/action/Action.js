@@ -1,4 +1,4 @@
-import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY} from '../constant/ActionType';
+import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART} from '../constant/ActionType';
 
 export const LoginAction = (params) => {
   // localStorage.setItem("accessToken", JSON.stringify(params.accessToken));
@@ -27,6 +27,25 @@ export const AllProductWait = (params) => {
     payload:params
   }
 } 
+export const ItemAddToCart = (params) => {
+  return{
+    type: ITEM_ADD_TO_CART,
+    payload:params
+  }
+}
+export const ItemRemoveToCart = (params) => {
+  console.log(params, 'ItemRemoveToCarts')
+  return{
+    type: ITEM_REMOVE_TO_CART,
+    payload:params
+  }
+}
+
+
+
+
+
+
 export const IncreaseQty = (params) => {
   return {
     type:INCREASE_QTY,
