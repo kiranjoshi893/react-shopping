@@ -19,9 +19,9 @@ const productQty = {
   cartQTY: 1,
   inputQty: ''
 }
-
+const cartList = JSON.parse(localStorage.getItem('cartList'))
 const itemList ={
-  items: [],
+  items: cartList ? cartList : [],
   filterItems: []
 }
 export const LoginReducer = (state = loginDetails, action) => {
@@ -75,22 +75,18 @@ export const ItemsAddToCart = (state = itemList, action) => {
   switch(action.type){
     case ITEM_ADD_TO_CART:{
         const itemInCart = state.items.find((item) => item.id === action.payload.id);
-        if(itemInCart){
-          itemInCart.qty ++
-        }
-        else{
-          state.items.push({...action.payload, qty: 1})
-        }
+        itemInCart ? itemInCart.qty ++ : state.items.push({...action.payload, qty: 1})
         localStorage.setItem('cartList', JSON.stringify(state.items))
         return{
           ...state
         }
       }
       case ITEM_REMOVE_TO_CART:{
-        console.log(state)
+        let result = state.items.filter(item => item.id !== action.payload.id)
+        localStorage.setItem('cartList', JSON.stringify(result))
         return{
           ...state,
-          items:state.items.filter(item => item.id !== action.payload.id)
+          items:result
         }
       }
       default:{

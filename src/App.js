@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import Products from './components/Products';
 import NavigationRoutes from './common/NavigationRoutes';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
@@ -31,6 +32,7 @@ export default function App(props) {
             return <Route key={data.name} exact path={data.path} element={data.Component}/>
           })}
           <Route path="/products/:id" element={<ProductDetails />}/>
+          <Route path="/cart" element={<Cart />}/>
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />

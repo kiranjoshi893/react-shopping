@@ -37,7 +37,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                     <Start className="me-2" />
                 </div>
                 <div className="product-price mt-3">
-                    <h5>${getData.price}</h5>
+                    <h5>₹ {getData.price}</h5>
                     <span className="old">{getData.category.name}</span>
                 </div>
                 <button className="mt-3 btn btn-main px-3 py-2 w-100" onClick={() => itemsAddToCart(getData)}>Add To Cart</button>

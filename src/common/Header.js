@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ItemRemoveToCart } from '../action/Action'
 import NavigationRoutes from './NavigationRoutes'
 import { BagIcon, CloseIcon } from './Svg'
 
 function Header() {
   const getDataFromStore = useSelector(state => state.ItemAddTOCart)
+  const {items} = getDataFromStore
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
-  const {items} = getDataFromStore
-  // console.log(items, 'getDataFromStore')
-  const cartList = JSON.parse(localStorage.getItem('cartList')) ? JSON.parse(localStorage.getItem('cartList')) : [] 
-  console.log(cartList, 'NavigationRoutes')
+  // const cartList = JSON.parse(localStorage.getItem('cartList')) ? JSON.parse(localStorage.getItem('cartList')) : [] 
+  // console.log(cartList, 'NavigationRoutes')
   const getState = ((state) => state.LoginStore.isLogin)
   const [show, setShow] = useState(true)
   return (
@@ -48,23 +48,24 @@ function Header() {
               </> 
                :
                <>
-               {console.log(cartList.length,'cartList.length')}
-               {cartList.length === 0 ? 
+               {items.length === 0 ? 
                <span className='cursor-pointer nav-link'><BagIcon /></span>
                : 
-               <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{cartList.length}</small></>} id="basic-nav-dropdown" >
+               <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></>} id="basic-nav-dropdown">
                 <div className='cart-dropdown-list'>
-                  {cartList.map((data) => {
+                  {items.map((data) => {
                     return (
-                      <div key={data.id} className='cart-sublist'>
-                        <div>
-                          <img src={data.images[0]}  />
+                      <div key={data.id} className='cursor-pointer cart-sublist' onClick={() => navigate('/cart')}>
+                        <div className='row'>
+                          <div className='col-md-4'>
+                            <img src={data.images[0]}  />
+                          </div>
+                          <div className="col-md-6 ps-0">
+                            <p className='fw-bold mb-0'>{data.title}</p>
+                            <p className="text-secondary mb-0">{data.qty}</p>
+                          </div>
+                          <div className='col-md-2 text-danger cursor-pointer'onClick={() => removeItemsToCart(data)}><CloseIcon /></div>
                         </div>
-                        <div>
-                          <p className='fw-bold mb-0'>{data.title}</p>
-                          <p className="text-secondary">{data.qty}</p>
-                        </div>
-                        <div className='text-danger cursor-pointer'onClick={() => removeItemsToCart(data)}><CloseIcon /></div>
                       </div>
                     )
                   })}

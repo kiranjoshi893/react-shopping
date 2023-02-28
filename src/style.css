@@ -197,13 +197,12 @@ ul.slick-dots.slick-thumb li.slick-active img{
   border: 1px solid #eee;
   padding: 2px;
 }
-.cart-dropdown-list {
-  padding: 1rem;
-}
 .cart-dropdown-list .cart-sublist {
-  display: flex;
-  justify-content: space-between;
   font-size: 0.85rem;
+  padding: 1rem 1rem;
+}
+.cart-dropdown-list .cart-sublist:not(:last-child){
+  border-bottom:1px solid #eee
 }
 .cart-dropdown .dropdown-menu {
   min-width: 300px;
@@ -213,4 +212,32 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .cart-dropdown  .dropdown-menu svg{
   width: 25px;
   fill: #dc3545;
+}
+.cart-list img{width: 150px;border:1px solid #eee; padding: 10px;}
+.cart-wrapper .cart-list:not(:last-child){
+  border-bottom: 1px solid #eee;
+}
+.cart-wrapper .cart-list{
+  padding: 1.5rem 1rem;
+}
+.cart-qty {
+  max-width: 120px;
+  background: rgb(238 238 238 / 67%);
+  border-radius: 6px;
+}
+.cart-qty input {
+  outline: none;
+  border: none;
+  background: none;
+  text-align: center;
+  padding: 0.5rem 0rem;
+  color: var(--bs-black);
+  font-weight: 600;
+}
+.cart-qty button {
+  outline: none;
+  border: none;
+}
+.cart-qty button svg {
+  fill: var(--bs-gray);
 }
