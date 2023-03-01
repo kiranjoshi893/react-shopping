@@ -21,7 +21,7 @@ import ProductList from './ProductList';
         <div className='container'>
             {getProductList.AllProductStore.productListWait ? <Loader /> : ''}
             <div className='row'>
-                {getProductList?.AllProductStore?.productList?.map((data) => {
+                {getProductList.AllProductStore.productList?.map((data) => {
                     return (
                         <div className="col-md-3 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
                     )
