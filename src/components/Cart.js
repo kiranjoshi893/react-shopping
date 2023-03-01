@@ -1,12 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { ItemDecrease, ItemIncrease, ItemRemoveToCart } from '../action/Action';
 import { BreadcrumbList } from '../common/Common';
 import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
  const Cart = () => {
     const navigate = useLocation()
     const getData = useSelector(data => data.ItemAddTOCart.items)
-    console.log(getData,  'getData')
+    const dispatch = useDispatch()
+    const increaseItems = (data) => dispatch(ItemIncrease(data))
+    const decreaseItems = (data) => dispatch(ItemDecrease(data))
+    const removeItem = (data) => dispatch(ItemRemoveToCart(data))
+    console.log(getData,  'getData::::')
     return (
         <>
         <BreadcrumbList url={navigate}/>
@@ -17,21 +22,24 @@ import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
                         <div className='cart-wrapper'>
                             {getData.map((item) => {
                             return (
-                                <div key={item.id} className='cart-list d-flex justify-content-between'>
-                                <div>
+                            <div key={item.id} className='row cart-list d-flex justify-content-between'>
+                                <div className='col-md-3'>
                                     <img src={item.images[0]} />
                                 </div>
-                                <div>
-                                    <h5>{item.title}</h5>
-                                    <div className='cart-qty d-flex'>
-                                        <button className='btn'><PlusIcon /></button>
-                                        <input type='text' value={item.qty} onChange={() => console.log('s')} className="form-control"/>
-                                        <button className='btn'><MinusIcon /></button>
-                                    </div>
-                                    <h5 className='fw-bold text-main mt-3'>₹ {item.price}</h5>
+                                <div className='col-md-4'>
+                                    <h5 className='text-secondary'>{item.title}</h5>
+                                    <h5 className='text-main mt-3 fw-bold'>₹ {item.price * item.qty}</h5>
                                 </div>
-                                <div>TOtal Amount</div>
-                                <div className='text-danger cursor-pointer small'>Remove</div>
+                                <div className='col-md-3'>
+                                    <div className='cart-qty d-flex float-end'>
+                                        <button className='btn' disabled={item.qty <= 1} onClick={() => decreaseItems(item)}><MinusIcon /></button>
+                                        <input type='text' value={item.qty} onChange={() => console.log('s')} className="form-control"/>
+                                        <button className='btn' disabled={item.qty >= 10} onClick={() => increaseItems(item)}><PlusIcon /></button>
+                                    </div>
+                                    {item.qty > 11 ? 'Quantity can not be more than 10' : ''}
+                                    {item.qty < 0 ? 'Quantity can not be less than 1' : ''}
+                                </div>
+                                <div className='col-md-2 text-danger text-end cursor-pointer' onClick={()=> removeItem(item)}>Remove</div>
                             </div>
                             )})}
                         </div>

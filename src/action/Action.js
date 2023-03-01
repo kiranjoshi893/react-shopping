@@ -1,4 +1,4 @@
-import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART} from '../constant/ActionType';
+import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL} from '../constant/ActionType';
 
 export const LoginAction = (params) => {
   // localStorage.setItem("accessToken", JSON.stringify(params.accessToken));
@@ -40,7 +40,24 @@ export const ItemRemoveToCart = (params) => {
     payload:params
   }
 }
-
+export const ItemIncrease = (params) => {
+  return{
+    type:ITEM_INCREASE,
+    payload:params
+  }
+}
+export const ItemDecrease = (params) => {
+  return{
+    type:ITEM_DECREASE,
+    payload:params
+  }
+}
+export const RemoveAllItems = (params) => {
+  return{
+    type:ITEM_REMOVE_ALL,
+    payload:params
+  }
+}
 
 
 

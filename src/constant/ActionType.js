@@ -9,3 +9,6 @@ export const CART_ITEM = 'CART_ITEM';
 export const CHANGE_QTY = 'CHANGE_QTY';  
 export const ITEM_ADD_TO_CART = 'ITEM_ADD_TO_CART';  
 export const ITEM_REMOVE_TO_CART = 'ITEM_REMOVE_TO_CART';  
+export const ITEM_INCREASE = 'ITEM_INCREASE';  
+export const ITEM_DECREASE = 'ITEM_DECREASE';  
+export const ITEM_REMOVE_ALL = 'ITEM_REMOVE_ALL';  

@@ -53,7 +53,7 @@ function Header() {
                : 
                <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></>} id="basic-nav-dropdown">
                 <div className='cart-dropdown-list'>
-                  {items.map((data) => {
+                  {items.slice(0, 4).map((data) => {
                     return (
                       <div key={data.id} className='cursor-pointer cart-sublist' onClick={() => navigate('/cart')}>
                         <div className='row'>
@@ -70,6 +70,7 @@ function Header() {
                     )
                   })}
                 </div>
+                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6'>View all</Link> : ''}
               </NavDropdown>
                }
 
