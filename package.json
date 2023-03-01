@@ -2,6 +2,7 @@
   "name": "react-ts",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://github.com/kiranjoshi893/react-test/",
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@types/react": "^18.0.8",
@@ -29,9 +30,12 @@
     "start-prod": "env-cmd -f .env.prod react-scripts start",
     "build-prod": "env.cmd -f .env.prod react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "react-scripts": "latest"
   },
   "browserslist": {
