@@ -13,9 +13,9 @@
 
 # misc
 .DS_Store
-.env.dev
-.env.prod
-.env.qa
+# .env.dev
+# .env.prod
+# .env.qa
 # firebase.js
 
 

@@ -7,7 +7,6 @@ const ProductSlider = (props) => {
   console.log(props, '345678')
   const {images} = props
   console.log(images, '345678')
-  const baseUrl  = 'https://api.lorem.space/image/shoes'
   const settings = {
     customPaging: function(i) {
       return (
