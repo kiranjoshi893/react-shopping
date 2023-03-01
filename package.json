@@ -28,10 +28,11 @@
     "build-qa": "env-cmd -f .env.qa react-scripts build",
     "start-prod": "env-cmd -f .env.prod react-scripts start",
     "build-prod": "env.cmd -f .env.prod react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "react-scripts": "latest"
   },
   "browserslist": {
