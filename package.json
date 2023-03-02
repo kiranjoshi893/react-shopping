@@ -1,7 +1,7 @@
 {
   "name": "react-ts",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "homepage": "https://kiranjoshi893.github.io/react-test/",
   "dependencies": {
     "@popperjs/core": "^2.11.6",
