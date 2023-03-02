@@ -16,6 +16,7 @@ function Header() {
   // console.log(cartList, 'NavigationRoutes')
   const getState = ((state) => state.LoginStore.isLogin)
   const [show, setShow] = useState(true)
+  // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
     <Navbar bg="white py-2" expand="lg" className='mb-4'>
       <div className="container">
