@@ -76,7 +76,8 @@ const SignUp = (props) => {
     }
     useEffect(() => {
         if(isLogin){
-            navigate(-1)
+            // navigate(-1)
+            navigate('/')
         }
     }, []);
     return (

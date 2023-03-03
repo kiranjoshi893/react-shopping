@@ -8,13 +8,11 @@ import { BagIcon, CloseIcon } from './Svg'
 
 function Header() {
   const getDataFromStore = useSelector(state => state.ItemAddTOCart)
+  const getState = useSelector((state) => state.LoginStore.isLogin)
   const {items} = getDataFromStore
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
-  // const cartList = JSON.parse(localStorage.getItem('cartList')) ? JSON.parse(localStorage.getItem('cartList')) : [] 
-  // console.log(cartList, 'NavigationRoutes')
-  const getState = ((state) => state.LoginStore.isLogin)
   const [show, setShow] = useState(true)
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
