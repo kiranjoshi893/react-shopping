@@ -3,14 +3,18 @@ import React, { Component, useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { LoginAction } from '../action/Action';
+import { LoginAction, LoginAction1, LoginError } from '../action/Action';
 import { auth } from '../firebase';
+import { login } from '../services/Auth';
+import { loginService } from '../services/Services';
 
 const Login = (props) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const loginHandler  = (data) => dispatch(LoginAction(data)) 
+    const login = (data) => dispatch(LoginAction1(data))
+    const loginError = (data) => dispatch(LoginError(data))
     const [disableButton, setDisableButton] = useState(false)
     const [inputValue, setInputValue] = useState({
         email:'',
@@ -52,17 +56,31 @@ const Login = (props) => {
             })
         }
         else{
-            signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
+            loginService(inputValue).then(res => {
+                console.log(res, 'loginService')
+                login(res)
+                loginError(res.message)
                 setDisableButton(false)
-                loginHandler(res.user)
-                // console.log(res.user)
                 navigate('/')
-                
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 setDisableButton(false)
                 console.log('error', error)
                 setInputValue({...inputValue, backendError: error.message})
             })
+
+            // authorization with firework
+            // signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
+            //     setDisableButton(false)
+            //     loginHandler(res.user)
+            //     // console.log(res.user)
+            //     navigate('/')
+                
+            // }).catch((error) => {
+            //     setDisableButton(false)
+            //     console.log('error', error)
+            //     setInputValue({...inputValue, backendError: error.message})
+            // })
         }
     }
     useEffect(() => {

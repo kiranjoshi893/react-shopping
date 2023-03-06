@@ -16,7 +16,7 @@ function Header() {
   const [show, setShow] = useState(true)
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
-    <Navbar bg="white py-2" expand="lg" className='mb-4'>
+    <Navbar bg="white py-2" expand="lg">
       <div className="container">
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -54,7 +54,7 @@ function Header() {
                 <div className='cart-dropdown-list'>
                   {items.slice(0, 4).map((data) => {
                     return (
-                      <div key={data.id} className='cursor-pointer cart-sublist' onClick={() => navigate('/cart')}>
+                      <div key={data.id} className='cursor-pointer cart-sublist'>
                         <div className='row'>
                           <div className='col-md-4'>
                             <img src={data.images[0]}  />
@@ -69,7 +69,7 @@ function Header() {
                     )
                   })}
                 </div>
-                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6'>View all</Link> : ''}
+                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : ''}
               </NavDropdown>
                }
 

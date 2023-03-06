@@ -1,10 +1,11 @@
 import { json } from 'react-router';
-import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN} from '../constant/ActionType';
+import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
   isLogin:auth ? true : false,
   accessToken:'',
+  error:''
 }
 const allProduct = {
   productList : [],
@@ -25,17 +26,45 @@ const itemList ={
   filterItems: [],
   validation:''
 }
-export const LoginReducer = (state = loginDetails, action) => {
-  console.log(action, 'LoginReducer')
-  // localStorage.setItem("accessToken", JSON.stringify(action.payload.stsTokenManager.accessToken)),
+const categoriesData = {
+  list: []
+}
+// export const LoginReducer = (state = loginDetails, action) => {
+//   console.log(action, 'LoginReducer')
+//   switch (action.type){
+//     case LOGIN: 
+//     let getToken = action.payload.stsTokenManager.accessToken
+//     localStorage.setItem('accessToken', JSON.stringify(getToken))
+//     return {
+//       ...state,
+//       accessToken: action.payload.stsTokenManager.accessToken,
+//       isLogin: localStorage.getItem('accessToken') ? true : false
+//     }
+//     default : 
+//       return {
+//         ...state
+//       }
+//   }
+// }
+
+export const LoginReducer1 = (state = loginDetails, action) => {
   switch (action.type){
-    case LOGIN: 
-    let getToken = action.payload.stsTokenManager.accessToken
-    localStorage.setItem('accessToken', JSON.stringify(getToken))
-    return {
-      ...state,
-      accessToken: action.payload.stsTokenManager.accessToken,
-      isLogin: localStorage.getItem('accessToken') ? true : false
+    case LOGIN: {
+      console.log('LoginReducer1')
+      let getToken = action.payload.data.access_token
+      localStorage.setItem('accessToken', JSON.stringify(getToken))
+      return {
+        ...state,
+        accessToken: action.payload.data.access_token,
+        isLogin: localStorage.getItem('accessToken') ? true : false
+      }
+    }
+    case LOGIN_ERROR:{
+      console.log('LoginReducer12')
+      return{
+        ...state,
+        error:action.payload
+      }
     }
     default : 
       return {
@@ -43,6 +72,7 @@ export const LoginReducer = (state = loginDetails, action) => {
       }
   }
 }
+
 export const AllProductReducer = (state = allProduct, action) => {
   switch (action.type){
     case ALL_PRODUCTS:
@@ -156,6 +186,21 @@ export const AddItemToCartReducer = (state = productQty, action) => {
   }
 }
 
+export const getAllCategoriesReducer = (state=categoriesData, action) => {
+  switch (action.type){
+    case ALL_CATEGORIES:{
+      return{
+        ...state,
+        list:action.payload
+      }
+    }
+    default:{
+      return{
+        ...state
+      }
+    }
+  }
+}
 
 // export const ListReducer = (state = toggleData, action) => {
 //   switch (action.type) {

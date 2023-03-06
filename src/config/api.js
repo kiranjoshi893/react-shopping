@@ -2,5 +2,7 @@ import settings from "./settings";
 
 let url = settings.api.url
 export default {
-    ALLPRODUCTS: url + "products"
+    LOGIN: url + 'auth/login',
+    ALLPRODUCTS: url + "products",
+    ALLCATEGORY: url + "categories"
 }
