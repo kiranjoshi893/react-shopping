@@ -22,3 +22,9 @@ export const getAllCategoriesService = (params) => {
     headers: headersApplicationJson
   })
 }
+export const filterByCategoryProducts = (params) => {
+  console.log(params, 'filterByCategoryProducts')
+  return axios.get(api.ALLPRODUCTS + params, {
+    headers: headersApplicationJson
+  })
+}

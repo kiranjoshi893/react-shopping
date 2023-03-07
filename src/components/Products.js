@@ -3,29 +3,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import { AllProductList } from '../action/Action';
 import { BreadcrumbList, Loader } from '../common/Common';
-import { getAllProduct } from '../services/Auth';
+import { getAllProduct, getProductByfilter } from '../services/Auth';
 import ProductList from './ProductList';
  const Products = (props) => {
     const navigate = useLocation()
-    const getProductList = useSelector((state) => state)
-    console.log(getProductList.AllProductStore.productList, 'getProductList1111')
-    const dispatch= useDispatch()
-    const storeProductList = (data) => dispatch(AllProductList(data))
+    const getProductList = useSelector((state) => state.AllProductStore)
+    console.log(getProductList, 'getProductList11112')
     useEffect(() => {
         getAllProduct()
-        storeProductList()
         console.log(navigate, 'navigation')
     },[])
+    const getProductByCategory = (data) => {
+        getProductByfilter(data)
+    }
     return <div>
         <BreadcrumbList url={navigate}/>
         <div className='container'>
-            {getProductList.AllProductStore.productListWait ? <Loader /> : ''}
+            {/* <button onClick={() => getProductByCategory('/?categoryId=2')} className='btn btn-main mb-4'>get cloth category data</button> */}
+            {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>
-                {getProductList.AllProductStore.productList?.map((data) => {
-                    return (
-                        <div className="col-md-3 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
-                    )
-                })}
+                <div className='col-md-3'>
+                    <h5 className="border-bottom pb-3">Search by Category</h5>
+                </div>
+                <div className='col-md-8'>
+                    <div className='row'>
+                        {getProductList.productList?.map((data) => {
+                            return (
+                                <div className="col-md-4 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
             {/* {getProductList?.AllProductStore?.productList?.map((data) => {return (<div>sadasdasd</div>)})} */}
         </div>
