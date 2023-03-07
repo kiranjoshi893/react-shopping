@@ -328,3 +328,9 @@ ul.slick-dots.slick-thumb li.slick-active img{
   left: auto;
   right: 0;
 }
+
+@media (min-width: 1400px){
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      max-width: 1380px;
+  }
+}

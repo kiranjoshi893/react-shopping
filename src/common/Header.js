@@ -69,7 +69,7 @@ function Header() {
                     )
                   })}
                 </div>
-                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : ''}
+                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View cart</Link>}
               </NavDropdown>
                }
 

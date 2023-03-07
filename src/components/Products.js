@@ -22,14 +22,14 @@ import ProductList from './ProductList';
             {/* <button onClick={() => getProductByCategory('/?categoryId=2')} className='btn btn-main mb-4'>get cloth category data</button> */}
             {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>
-                <div className='col-md-3'>
+                <div className='col-md-2'>
                     <h5 className="border-bottom pb-3">Search by Category</h5>
                 </div>
-                <div className='col-md-8'>
+                <div className='col-md-10'>
                     <div className='row'>
                         {getProductList.productList?.map((data) => {
                             return (
-                                <div className="col-md-4 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
+                                <div className="col-md-3 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
                             )
                         })}
                     </div>
