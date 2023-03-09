@@ -12,6 +12,8 @@ const Login = (props) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
+    const isLogin1 = useSelector((state) => state.LoginStore)
+    console.log(isLogin1, 'isLogin1')
     const loginHandler  = (data) => dispatch(LoginAction(data)) 
     const login = (data) => dispatch(LoginAction1(data))
     const loginError = (data) => dispatch(LoginError(data))
@@ -103,6 +105,7 @@ const Login = (props) => {
                     <Form.Control type="password" value={inputValue.password} onChange={onChangeHandler} name='password' placeholder="Password" />
                     {inputValue.passwordError ? <p className='text-danger'>{inputValue.passwordError}</p> :''}
                 </Form.Group>
+                {inputValue.backendError ? <p className='small text-danger'>{inputValue.backendError}</p> : ''}
                 <Button disabled={disableButton} variant="primary" type="submit" onClick={submitLoginForm}>
                     Submit
                 </Button>
