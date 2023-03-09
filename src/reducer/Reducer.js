@@ -1,5 +1,5 @@
 import { json } from 'react-router';
-import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR} from '../constant/ActionType';
+import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 const loginDetails = {
@@ -66,12 +66,36 @@ export const LoginReducer1 = (state = loginDetails, action) => {
         error:action.payload
       }
     }
+    case LOGOUT : {
+      return{
+        ...state,
+        accessToken:localStorage.clear(),
+        isLogin:false
+      }
+    }
     default : 
       return {
         ...state
       }
   }
 }
+// export const LogoutReducer = (state=loginDetails, action) => {
+//   switch(action.type){
+//     case LOGOUT : {
+//       return{
+//         ...state,
+//         accessToken:localStorage.clear(),
+//         isLogin:localStorage.getItem('accessToken') ? true : false
+//       }
+//     }
+//     default:{
+//       return{
+//         ...state
+//       }
+//     }
+//   }
+// }
+
 
 export const AllProductReducer = (state = allProduct, action) => {
   switch (action.type){

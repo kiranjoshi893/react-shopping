@@ -61,6 +61,7 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
   justify-content: center;
   align-items: center;
   height: calc(100vh - 125px);
+  background-color:var(--white)
 }
 .login-wrapper >  div{
   box-shadow: 0px 0px 15px #eee;

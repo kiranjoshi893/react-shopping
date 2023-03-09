@@ -1,4 +1,5 @@
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const ALL_PRODUCTS = 'ALL_PRODUCTS';
 export const ALL_PRODUCTS_ERROR = 'ALL_PRODUCTS_ERROR';

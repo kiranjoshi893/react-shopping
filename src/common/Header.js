@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { ItemRemoveToCart } from '../action/Action'
+import { ItemRemoveToCart, LogoutAction } from '../action/Action'
 import NavigationRoutes from './NavigationRoutes'
 import { BagIcon, CloseIcon } from './Svg'
 
@@ -13,6 +13,7 @@ function Header() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
+  const logout = (data) => dispatch(LogoutAction(data))
   const [show, setShow] = useState(true)
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
@@ -21,6 +22,7 @@ function Header() {
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+        {getState ? 
           <Nav className="me-auto">
             {NavigationRoutes.map((data) => {
               return (
@@ -38,7 +40,7 @@ function Header() {
               </div>)
             })}
           </Nav>
-          {/* {data?.subNav?.map((data) => { */}
+          : '' }
           <Nav className="ms-auto">
             {!getState ? 
               <>
@@ -73,7 +75,7 @@ function Header() {
               </NavDropdown>
                }
 
-               <Link className='nav-link' to="/login">Logout</Link>
+               <Link className='nav-link' to="/login" onClick={() => logout()}>Logout</Link>
                </>
             }
           </Nav>
