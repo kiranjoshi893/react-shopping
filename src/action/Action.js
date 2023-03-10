@@ -60,6 +60,12 @@ export const AllCategoriesWait = (params) => {
     payload:params
   }
 }
+export const CategoriesFilter = (params) => {
+  return{
+    type:ALL_CATEGORIES,
+    payload:params
+  }
+}
 
 
 export const ItemAddToCart = (params) => {

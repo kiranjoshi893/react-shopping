@@ -1,29 +1,28 @@
 import React, { Component, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
-import { AllProductList } from '../action/Action';
+import { AllCategories, AllProductList } from '../action/Action';
 import { BreadcrumbList, Loader } from '../common/Common';
-import { getAllProduct, getProductByfilter } from '../services/Auth';
+import FilterComponent from '../common/FilterComponent';
+import { getAllCategories, getAllProduct, getProductByfilter } from '../services/Auth';
 import ProductList from './ProductList';
  const Products = (props) => {
     const navigate = useLocation()
     const getProductList = useSelector((state) => state.AllProductStore)
-    console.log(getProductList, 'getProductList11112')
+    const getDataFromStore = useSelector((state) => state.getAllCategories)
+    console.log(getDataFromStore, 'getDataFromStore')
     useEffect(() => {
         getAllProduct()
-        console.log(navigate, 'navigation')
+        getAllCategories('/')
     },[])
-    const getProductByCategory = (data) => {
-        getProductByfilter(data)
-    }
     return <div>
         <BreadcrumbList url={navigate}/>
-        <div className='container'>
+        <div className='container mt-5'>
             {/* <button onClick={() => getProductByCategory('/?categoryId=2')} className='btn btn-main mb-4'>get cloth category data</button> */}
             {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>
                 <div className='col-md-2'>
-                    <h5 className="border-bottom pb-3">Search by Category</h5>
+                    <FilterComponent category={getDataFromStore.list}/>
                 </div>
                 <div className='col-md-10'>
                     <div className='row'>

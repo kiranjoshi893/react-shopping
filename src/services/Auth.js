@@ -1,6 +1,6 @@
 import { async } from "@firebase/util"
 import { useDispatch } from "react-redux"
-import { AllCategories, AllCategoriesError, AllProductError, AllProductList, AllProductWait, LoginAction1, LoginError } from "../action/Action"
+import { AllCategories, AllCategoriesError, AllProductError, AllProductList, AllProductWait, CategoriesFilter, LoginAction1, LoginError } from "../action/Action"
 import { Store } from "../store/Store"
 import { filterByCategoryProducts, getAllCategoriesService, getAllProductServices, loginService } from "./Services"
 
@@ -38,7 +38,11 @@ export const getAllCategories = async () => {
     })
 }
 export const getProductByfilter = async(params) => {
-    await filterByCategoryProducts(params).then(res => {
+    const dispatch = Store.dispatch
+    const storeProduct = (data) => dispatch((AllProductList(data)))
+    const paramsList = params === undefined ? '' : `/?categoryId=${params}`
+    await filterByCategoryProducts(paramsList).then(res => {
         console.log(res, 'filterByCategoryProducts')
+        storeProduct(res.data)
     })
 }
