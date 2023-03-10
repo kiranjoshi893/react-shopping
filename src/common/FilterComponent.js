@@ -18,7 +18,7 @@ const FilterComponent = (props) => {
     console.log(category, 'categorycategory')
     return(
         <div className='product-filter'>
-            <h6 className="fw-bold d-flex justify-content-between mb-3">Category {clearFilter ?<span className='small fw-normal text-danger cursor-pointer' onClick={() => clearAllFilter()}>Clear</span> : '' }</h6>
+            <h6 className="fw-bold d-flex justify-content-between mb-3">Filter by categories {clearFilter ?<span className='small fw-normal text-danger cursor-pointer' onClick={() => clearAllFilter()}>Clear</span> : '' }</h6>
             <ul className='list-unstyled'>
                 {category?.map((data) => {
                     return(
