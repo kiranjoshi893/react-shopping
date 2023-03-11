@@ -363,6 +363,8 @@ ul.slick-dots.slick-thumb li.slick-active img{
   position: relative;
   font-size: 0.95rem;
 }
+.slick-slide{height: auto !important;}
+.slick-dots{position: static !important;}
 
 
 @media (min-width: 1400px){

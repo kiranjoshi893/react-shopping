@@ -43,7 +43,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
         <BreadcrumbList url={navigate}/>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-md-5'>
+                    <div className='col-md-5 mb-5'>
                         <ProductSlider images={state.images}/>
                     </div>
                     <div className='col-md-7 ps-5'>

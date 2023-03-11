@@ -10,8 +10,7 @@ import bannerImage from './../images/banner.jpg'
 import ProductList from './ProductList'
 
 const Home = (props) => {
-  const navigate = useLocation()
-  const dispatch= useDispatch()
+  const location = useLocation()
   const getProductList = useSelector((state) => state)
   const filterItems = getProductList
   console.log(getProductList, 'history1111')
@@ -20,7 +19,7 @@ const Home = (props) => {
     getAllProduct()
   },[])
   return (<>
-    <BreadcrumbList url={navigate}/>
+    <BreadcrumbList url={location}/>
     <>
       <div className='home-banner position-relative'>
         <img src={bannerImage} className="w-100"/>
