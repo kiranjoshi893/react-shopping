@@ -14,7 +14,7 @@ import ProductList from './ProductList';
     const navigate = useNavigate()
     const getProductList = useSelector((state) => state.AllProductStore)
     const getDataFromStore = useSelector((state) => state.getAllCategories)
-    console.log(getDataFromStore, 'getDataFromStore')
+    console.log(getProductList, 'getDataFromStore')
     const getCategoryData = (data) => {
         getProductByfilter(data)
         setClearFilter(data)

@@ -39,10 +39,13 @@ export const getAllCategories = async () => {
 }
 export const getProductByfilter = async(params) => {
     const dispatch = Store.dispatch
+    const storeProductWait = (data) => dispatch((AllProductWait(data)))
     const storeProduct = (data) => dispatch((AllProductList(data)))
     const paramsList = params === undefined ? '' : `/?categoryId=${params}`
+    storeProductWait(true)
     await filterByCategoryProducts(paramsList).then(res => {
         console.log(res, 'filterByCategoryProducts')
         storeProduct(res.data)
+        storeProductWait(false)
     })
 }
