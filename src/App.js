@@ -33,19 +33,27 @@ export default function App(props) {
       <div>
       <Header />
       <Routes>
-        <Route exact path='/' element={<PrivateRoute/>}>
+        {/* <Route exact path='/' element={<PrivateRoute/>}>
           {NavigationRoutes.map((data) => {
             return <Route key={data.name} exact path={data.path} element={data.Component}/>
           })}
           <Route path="/products/:id" element={<ProductDetails />}/>
           <Route path="/cart" element={<Cart />}/>
-        </Route>
-        <Route path="/login" exact element={<Login />} />
-        <Route path="/signup" exact element={<Signup />} />
+        </Route> */}
+          {NavigationRoutes.map((data) => {
+            return <Route key={data.name} exact path={data.path} element={data.Component}/>
+          })}
+          <Route path="/products/:id" element={<ProductDetails />}/>
+          <Route exact path='/' element={<PrivateRoute/>}>
+            <Route path="/cart" element={<Cart />}/>
+          </Route>
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/signup" exact element={<Signup />} />
         {/* <Route path="/admin/create" exact element={<CreateList />} /> */}
         {/* <Route exact path='/' element={<ProtectedRoute Component={Home} />} /> */}
       </Routes>
-      {getState ? <Footer /> : '' }
+      {/* {getState ? <Footer /> : '' } */}
+      <Footer />
     </div>
     </div>
   );

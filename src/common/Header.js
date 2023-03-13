@@ -22,7 +22,7 @@ function Header() {
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        {getState ? 
+        {/* {getState ?  */}
           <Nav className="me-auto">
             {NavigationRoutes.map((data) => {
               return (
@@ -40,43 +40,42 @@ function Header() {
               </div>)
             })}
           </Nav>
-          : '' }
+          {/* : '' } */}
           <Nav className="ms-auto">
+          <>
+                {items.length === 0 ? 
+                <span className='cursor-pointer nav-link'><BagIcon /></span>
+                : 
+                <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></>} id="basic-nav-dropdown">
+                  <div className='cart-dropdown-list'>
+                    {items.slice(0, 4).map((data) => {
+                      return (
+                        <div key={data.id} className='cursor-pointer cart-sublist'>
+                          <div className='row'>
+                            <div className='col-md-4'>
+                              <img src={data.images[0]}  />
+                            </div>
+                            <div className="col-md-6 ps-0">
+                              <p className='fw-bold mb-0'>{data.title}</p>
+                              <p className="text-secondary mb-0">{data.qty}</p>
+                            </div>
+                            <div className='col-md-2 text-danger cursor-pointer'onClick={() => removeItemsToCart(data)}><CloseIcon /></div>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View cart</Link>}
+                </NavDropdown>
+                }
+              </>
             {!getState ? 
               <>
                 <Link className='nav-link' to="/login">Login</Link>
                 <Link className='nav-link' to="/signup">SignUp</Link>
               </> 
                :
-               <>
-               {items.length === 0 ? 
-               <span className='cursor-pointer nav-link'><BagIcon /></span>
-               : 
-               <NavDropdown className='cart-dropdown' show={show}  title={<><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></>} id="basic-nav-dropdown">
-                <div className='cart-dropdown-list'>
-                  {items.slice(0, 4).map((data) => {
-                    return (
-                      <div key={data.id} className='cursor-pointer cart-sublist'>
-                        <div className='row'>
-                          <div className='col-md-4'>
-                            <img src={data.images[0]}  />
-                          </div>
-                          <div className="col-md-6 ps-0">
-                            <p className='fw-bold mb-0'>{data.title}</p>
-                            <p className="text-secondary mb-0">{data.qty}</p>
-                          </div>
-                          <div className='col-md-2 text-danger cursor-pointer'onClick={() => removeItemsToCart(data)}><CloseIcon /></div>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-                {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View cart</Link>}
-              </NavDropdown>
-               }
-
                <Link className='nav-link' to="/login" onClick={() => logout()}>Logout</Link>
-               </>
             }
           </Nav>
         </Navbar.Collapse>
