@@ -18,10 +18,10 @@ import {SuccessNotification} from '../common/Common'
     const dispatch = useDispatch()
     const getProductList = useSelector((state) => state.AllProductStore)
     const getDataFromStore = useSelector((state) => state.getAllCategories)
-    const cartItem = useSelector((state) => state.ItemAddTOCart.validation)
+    const cartItemList = useSelector((state) => state.ItemAddTOCart.toast)
 
     const itemsAddToCart = (data) => dispatch(ItemAddToCart(data))
-    console.log(cartItem, 'getDataFromStore11')
+    console.log(cartItemList, 'getDataFromStore11')
     const getCategoryData = (data) => {
         getProductByfilter(data)
         setClearFilter(data)
@@ -31,13 +31,22 @@ import {SuccessNotification} from '../common/Common'
         setClearFilter('')
         navigate(location.pathname, { replace: true });
     }
+    const itemsToCart = (data) =>{
+        setShowToast(true)
+        itemsAddToCart(data)
+    }
     useEffect(() => {
         getAllCategories('/')
         getProductByfilter(state?.id)
         setClearFilter(state?.id)
     },[])
+    useEffect(() => {
+        setTimeout(() => setShowToast(false), 1000)
+    },[cartItemList])
     return <div>
         <BreadcrumbList url={location}/>
+        {/* {showToast ? 'true' : 'false'} */}
+        {showToast ? <SuccessNotification text="Item added to cart" bg="success"/> : ''}
         <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>
@@ -46,9 +55,9 @@ import {SuccessNotification} from '../common/Common'
                 </div>
                 <div className='col-md-10'>
                     <div className='row'>
-                        {getProductList.productList?.map((data) => {
+                        {getProductList?.productList?.map((data) => {
                             return (
-                                <div className="col-md-3 mb-4 pb-3" key={data.id}><ProductList data={data}/></div>
+                                <div className="col-md-3 mb-4 pb-3" key={data.id}><ProductList data={data} itemsToCart={(data) => itemsToCart(data)} showToast={showToast}/></div>
                             )
                         })}
                     </div>

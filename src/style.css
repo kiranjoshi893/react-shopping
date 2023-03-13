@@ -371,7 +371,14 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .slick-slide{height: auto !important;}
 .slick-dots{position: static !important;}
 
-.toast {padding: 0.5rem 1rem;width: 300px;}
+.toast {
+  padding: 0.5rem 1rem;
+  width: 300px;
+  position: absolute;
+  top: 76px;
+  right: 0;
+  z-index: 1;
+}
 .toast-header {
   background: none;
   color: var(--white);
@@ -386,7 +393,6 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .toast.bg-secondary{background-color: var(--secondary) !important;}
 .toast.bg-warning{background-color: var(--warning) !important;}
 .toast.bg-danger{background-color: var(--danger) !important;}
-
 .toast svg{width: 28px;height: 28px;}
 .toast svg path{fill: var(--white)!important;}
 @media (min-width: 1400px){

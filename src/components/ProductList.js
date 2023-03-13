@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { ItemAddToCart } from '../action/Action';
 import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
@@ -11,6 +11,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
     const getData = props.data
     console.log(getData, 'props::::::::::')
     const dispatch = useDispatch()
+    const cartItem = useSelector((state) => state.ItemAddTOCart.validation)
     const itemsAddToCart = (data) => dispatch(ItemAddToCart(data))
     const goToDetailPage = (data) => {
         const filtertedURL = data.title.split(' ').join('-')
@@ -20,7 +21,9 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
     const itemsToCart = (data) =>{
         itemsAddToCart(data)
     }
-    
+    // useEffect(() => {
+    //     setInterval(() => {console.log('sdssds')}, 5000);
+    // },[cartItem])
     return (
         <div className="product-wrap border h-100 mb-25" key={getData.id}>
             <div className="product-img">
@@ -44,7 +47,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                     <h6>₹{getData.price} <span className='px-2'>-</span> <del className='text-secondary fw-light'>₹{getData.price + 100}</del></h6>
                     <span className="old badge bg-light text-black fw-lighter">{getData.category.name}</span>
                 </div>
-                {props.showAddToCart === false ?  '' : <button className="mt-3 btn btn-main px-3 py-2 w-100" onClick={() => itemsToCart(getData)}>Add To Cart</button>}
+                {props.showAddToCart === false ?  '' : <button className="mt-3 btn btn-main px-3 py-2 w-100" onClick={() => props.itemsToCart(getData)}>Add To Cart</button>}
             </div>
         </div>
     )

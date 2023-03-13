@@ -24,7 +24,7 @@ const cartList = JSON.parse(localStorage.getItem('cartList'))
 const itemList ={
   items: cartList ? cartList : [],
   filterItems: [],
-  validation:''
+  toast:''
 }
 const categoriesData = {
   list: []
@@ -134,6 +134,7 @@ export const ItemsAddToCart = (state = itemList, action) => {
         localStorage.setItem('cartList', JSON.stringify(state.items))
         return{
           ...state,
+          toast:action.payload.qty ++
         }
       }
       case ITEM_REMOVE_TO_CART:{
