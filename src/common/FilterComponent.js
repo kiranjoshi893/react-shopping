@@ -15,7 +15,6 @@ const FilterComponent = (props) => {
         console.log(data, clearFilter, 'clearFilter111')
     }
     const clearAllFilter = () => {
-        getProductByfilter()
         setClearFilter('')
         navigate(location.pathname, { replace: true });
     }

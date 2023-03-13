@@ -15,7 +15,7 @@ import ProductList from './ProductList';
     const getDataFromStore = useSelector((state) => state.getAllCategories)
     console.log(getDataFromStore, 'getDataFromStore')
     useEffect(() => {
-        getAllProduct()
+        // getAllProduct()
         getAllCategories('/')
         // navigate(location.pathname, { replace: true });
     },[])
