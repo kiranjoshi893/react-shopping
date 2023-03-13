@@ -1,5 +1,4 @@
 import { json } from 'react-router';
-import { SuccessNotification } from '../common/Common';
 import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
@@ -25,7 +24,7 @@ const cartList = JSON.parse(localStorage.getItem('cartList'))
 const itemList ={
   items: cartList ? cartList : [],
   filterItems: [],
-  validation:false
+  validation:''
 }
 const categoriesData = {
   list: []
@@ -130,14 +129,11 @@ export const AllProductReducer = (state = allProduct, action) => {
 export const ItemsAddToCart = (state = itemList, action) => {
   switch(action.type){
     case ITEM_ADD_TO_CART:{
-      console.log(action.payload, 'dddddddddddddddddddddddddddddd')
         const itemInCart = state.items.find((item) => item.id === action.payload.id);
         itemInCart ? itemInCart.qty ++ : state.items.push({...action.payload, qty: 1})
         localStorage.setItem('cartList', JSON.stringify(state.items))
-        const toast = itemInCart.qty
         return{
           ...state,
-          validation: toast
         }
       }
       case ITEM_REMOVE_TO_CART:{
