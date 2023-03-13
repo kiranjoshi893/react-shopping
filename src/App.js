@@ -28,8 +28,9 @@ export default function App(props) {
   }
   
   return (
-    <>
-      <HashRouter>
+    <div>
+      {/* <BrowserRouter> */}
+      <div>
       <Header />
       <Routes>
         <Route exact path='/' element={<PrivateRoute/>}>
@@ -44,8 +45,8 @@ export default function App(props) {
         {/* <Route path="/admin/create" exact element={<CreateList />} /> */}
         {/* <Route exact path='/' element={<ProtectedRoute Component={Home} />} /> */}
       </Routes>
-      </HashRouter>
       {getState ? <Footer /> : '' }
-    </>
+    </div>
+    </div>
   );
 }
