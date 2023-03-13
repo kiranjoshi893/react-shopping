@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import { AddItemToCart, AddToCart, CartItem, CartQtyChange, IncreaseQty } from '../action/Action';
-import { BreadcrumbList, Loader } from '../common/Common';
+import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
 import ProductSlider from '../common/ProductSlider';
 import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
 // import { getAllProduct } from '../services/Auth';

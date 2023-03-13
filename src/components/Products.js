@@ -1,20 +1,27 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from "react-router-dom";
-import { AllCategories, AllProductList } from '../action/Action';
-import { BreadcrumbList, Loader } from '../common/Common';
+import { AllCategories, AllProductList, ItemAddToCart } from '../action/Action';
+import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
 import FilterComponent from '../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../services/Auth';
 import ProductList from './ProductList';
+import {SuccessNotification} from '../common/Common'
+
  const Products = (props) => {
     const location = useLocation()
     const {state} = location
     console.log(state, 'propsprops111')
     const [clearFilter, setClearFilter] = useState('')
+    const [showToast, setShowToast] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const getProductList = useSelector((state) => state.AllProductStore)
     const getDataFromStore = useSelector((state) => state.getAllCategories)
-    console.log(getProductList, 'getDataFromStore')
+    const cartItem = useSelector((state) => state.ItemAddTOCart.validation)
+
+    const itemsAddToCart = (data) => dispatch(ItemAddToCart(data))
+    console.log(cartItem, 'getDataFromStore11')
     const getCategoryData = (data) => {
         getProductByfilter(data)
         setClearFilter(data)
@@ -29,7 +36,6 @@ import ProductList from './ProductList';
         getProductByfilter(state?.id)
         setClearFilter(state?.id)
     },[])
-
     return <div>
         <BreadcrumbList url={location}/>
         <div className='container'>

@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation} from 'react-router'
 import { AllProductList } from '../action/Action'
-import { BreadcrumbList } from '../common/Common'
+import { BreadcrumbList } from '../common/BreadcrumbList'
 import Footer from '../common/Footer'
+import HomeBanner from '../common/HomeBanner'
 import HomeThreeCard from '../common/HomeThreeCard'
 import { getAllCategories, getAllProduct} from '../services/Auth'
-import bannerImage from './../images/banner.jpg'
 import ProductList from './ProductList'
 
 const Home = (props) => {
@@ -21,14 +21,7 @@ const Home = (props) => {
   return (<>
     <BreadcrumbList url={location}/>
     <>
-      <div className='home-banner position-relative'>
-        <img src={bannerImage} className="w-100"/>
-        <div className='banner-caption'>
-          <h1 className="mb-0">Winter Offers</h1>
-          <h3 className="mb-4">Get upto 40% </h3>
-          <button className='btn btn-shoping'>Shop Now</button>
-        </div>
-      </div>
+      <HomeBanner/>
       <div className='container'>
         <div className='row mt-4'>
         {getProductList.getAllCategories.list?.slice(0, 3)?.map((data) => {

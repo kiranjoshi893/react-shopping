@@ -69,6 +69,7 @@ export const CategoriesFilter = (params) => {
 
 
 export const ItemAddToCart = (params) => {
+  console.log(params, 'ItemAddToCartItemAddToCart')
   return{
     type: ITEM_ADD_TO_CART,
     payload:params

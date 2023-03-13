@@ -17,6 +17,10 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
         console.log(filtertedURL, 'filtertedURL')
         navigate(`/products/${filtertedURL}`, {state:data})
     }
+    const itemsToCart = (data) =>{
+        itemsAddToCart(data)
+    }
+    
     return (
         <div className="product-wrap border h-100 mb-25" key={getData.id}>
             <div className="product-img">
@@ -40,7 +44,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                     <h6>₹{getData.price} <span className='px-2'>-</span> <del className='text-secondary fw-light'>₹{getData.price + 100}</del></h6>
                     <span className="old badge bg-light text-black fw-lighter">{getData.category.name}</span>
                 </div>
-                {props.showAddToCart === false ?  '' : <button className="mt-3 btn btn-main px-3 py-2 w-100" onClick={() => itemsAddToCart(getData)}>Add To Cart</button>}
+                {props.showAddToCart === false ?  '' : <button className="mt-3 btn btn-main px-3 py-2 w-100" onClick={() => itemsToCart(getData)}>Add To Cart</button>}
             </div>
         </div>
     )

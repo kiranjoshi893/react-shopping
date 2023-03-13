@@ -1,30 +1,20 @@
-import React from 'react'
-import { Breadcrumb } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import React, {useState} from 'react'
+import Toast from 'react-bootstrap/Toast';
+import { CheckIcon, CloseIconFill, InfoIcon } from './Svg';
 export const Loader = () => <div className="flone-preloader-wrapper"><div className="lds-ripple"><div></div><div></div></div></div>
-export const BreadcrumbList = (props) => {
-  const pathnames = props.url.pathname.split("/").filter(x => x);
-  console.log(pathnames, 'props1111111112')
-  console.log(window.location.pathname, 'props1111111111')
-  // console.log(isLast, routeTo, 'routeTo')
-  
-   
-    return (
-        <>{pathnames.length >= 1 ? <div className='bg-light'>
-        <Breadcrumb className='container breadcrumb-custom py-3 mb-4'>
-        <li className='breadcrumb-item'><Link to="/">Home</Link></li>
-          {pathnames.map((data, index) => {
-            console.log(index, 'index')
-            const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-            const filteredURL = data.split('-').join(' ');
-            const isLast = index === pathnames.length - 1;
-            console.log(isLast, filteredURL, 'routeTo')
-            return isLast ? (<li key={data} className='breadcrumb-item'><span>{filteredURL}</span></li>)
-              : 
-              <li key={data} className='breadcrumb-item'><Link to={routeTo}>{filteredURL}</Link></li>
-              }
-            )}
-        </Breadcrumb>
-      </div> :  ''}</>
-    );
-  }
+export const SuccessNotification = (props) => {
+    const [show, setShow] = useState(true);
+    return (<Toast className="d-inline-block m-1" onClose={() => setShow(false)} show={show} bg={props.bg ? props.bg : 'secondary'} autohide={true} delay={2000}>
+          <Toast.Header closeVariant={'white'}>
+          <p className='mb-0'>
+            {props.bg === 'success' ? <CheckIcon/> : ''}
+            {props.bg === 'info' ? <InfoIcon/> : ''}
+            {props.bg === 'danger' ?  <CloseIconFill/> : ''}
+            {props.bg === 'warning' ?  <InfoIcon/> : ''}
+            
+            <span className='ps-2'>{props.body ? props.body : 'Notification text'}</span>
+            </p>           
+          </Toast.Header>
+        </Toast>
+  );
+}

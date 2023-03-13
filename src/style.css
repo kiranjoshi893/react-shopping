@@ -4,6 +4,11 @@
   --main-color:#f91942;
   --yellow:#ffa900;
   --white:#fff;
+  --success: #41d888;
+  --danger:#f94416;
+  --info:#0087d7;
+  --secondary:#ccc;
+  --warning:#ffbc00;
 }
 body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gray);}
 .yellow{color: var(  --yellow);}
@@ -366,7 +371,24 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .slick-slide{height: auto !important;}
 .slick-dots{position: static !important;}
 
+.toast {padding: 0.5rem 1rem;width: 300px;}
+.toast-header {
+  background: none;
+  color: var(--white);
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+}
+.toast.bg-success{background-color: var(--success) !important;}
+.toast.bg-info{background-color: var(--info) !important;}
+.toast.bg-secondary{background-color: var(--secondary) !important;}
+.toast.bg-warning{background-color: var(--warning) !important;}
+.toast.bg-danger{background-color: var(--danger) !important;}
 
+.toast svg{width: 28px;height: 28px;}
+.toast svg path{fill: var(--white)!important;}
 @media (min-width: 1400px){
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
       max-width: 1380px;

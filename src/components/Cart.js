@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { ItemDecrease, ItemIncrease, ItemRemoveToCart } from '../action/Action';
-import { BreadcrumbList } from '../common/Common';
+import { BreadcrumbList } from '../common/BreadcrumbList';
 import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
  const Cart = () => {
     const navigate = useLocation()
