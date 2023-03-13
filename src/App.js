@@ -32,7 +32,7 @@ export default function App(props) {
       {/* <BrowserRouter> */}
       <div>
       <Header />
-      {/* <Routes>
+      <Routes>
         <Route exact path='/' element={<PrivateRoute/>}>
           {NavigationRoutes.map((data) => {
             return <Route key={data.name} exact path={data.path} element={data.Component}/>
@@ -42,8 +42,10 @@ export default function App(props) {
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
+        {/* <Route path="/admin/create" exact element={<CreateList />} /> */}
+        {/* <Route exact path='/' element={<ProtectedRoute Component={Home} />} /> */}
       </Routes>
-      {getState ? <Footer /> : '' } */}
+      {getState ? <Footer /> : '' }
     </div>
     </div>
   );
