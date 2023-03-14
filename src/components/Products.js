@@ -6,8 +6,6 @@ import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
 import FilterComponent from '../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../services/Auth';
 import ProductList from './ProductList';
-import {SuccessNotification} from '../common/Common'
-import { ToastContainer, toast } from 'react-toastify';
 
 
  const Products = (props) => {
@@ -51,7 +49,6 @@ import { ToastContainer, toast } from 'react-toastify';
         {/* {showToast ? 'true' : 'false'} */}
         {/* {showToast ? <SuccessNotification text="Item added to cart" bg="success"/> : ''} */}
         {/* <button onClick={notify}>Notify!</button> */}
-        <ToastContainer />
         <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>

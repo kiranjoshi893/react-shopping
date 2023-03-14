@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import { ItemRemoveToCart, LogoutAction } from '../action/Action'
 import NavigationRoutes from './NavigationRoutes'
 import { BagIcon, CloseIcon } from './Svg'
@@ -18,6 +19,7 @@ function Header() {
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
     <Navbar bg="white py-2" expand="lg">
+      <ToastContainer />
       <div className="container">
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

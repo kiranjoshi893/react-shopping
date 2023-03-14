@@ -72,14 +72,14 @@ export const CategoriesFilter = (params) => {
 
 export const ItemAddToCart = (params) => {
   console.log(params, 'ItemAddToCartItemAddToCart')
-  toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT});
+  // toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT});
   return{
     type: ITEM_ADD_TO_CART,
     payload:params
   }
 }
 export const ItemRemoveToCart = (params) => {
-  toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT});
+  // toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT});
   return{
     type: ITEM_REMOVE_TO_CART,
     payload:params,

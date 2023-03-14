@@ -1,4 +1,5 @@
 import { json } from 'react-router';
+import { toast } from 'react-toastify';
 import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
@@ -134,7 +135,7 @@ export const ItemsAddToCart = (state = itemList, action) => {
         localStorage.setItem('cartList', JSON.stringify(state.items))
         return{
           ...state,
-          toast:action.payload.qty ++
+          toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT})
         }
       }
       case ITEM_REMOVE_TO_CART:{
@@ -143,7 +144,8 @@ export const ItemsAddToCart = (state = itemList, action) => {
         localStorage.setItem('cartList', JSON.stringify(result))
         return{
           ...state,
-          items:result
+          items:result,
+          toast: toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT})
         }
       }
       case ITEM_INCREASE:{
