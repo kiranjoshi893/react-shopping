@@ -7,8 +7,11 @@ import FilterComponent from '../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../services/Auth';
 import ProductList from './ProductList';
 import {SuccessNotification} from '../common/Common'
+import { ToastContainer, toast } from 'react-toastify';
+
 
  const Products = (props) => {
+    // const notify = () => toast("Wow so easy!");
     const location = useLocation()
     const {state} = location
     console.log(state, 'propsprops111')
@@ -46,7 +49,9 @@ import {SuccessNotification} from '../common/Common'
     return <div>
         <BreadcrumbList url={location}/>
         {/* {showToast ? 'true' : 'false'} */}
-        {showToast ? <SuccessNotification text="Item added to cart" bg="success"/> : ''}
+        {/* {showToast ? <SuccessNotification text="Item added to cart" bg="success"/> : ''} */}
+        {/* <button onClick={notify}>Notify!</button> */}
+        <ToastContainer />
         <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
             <div className='row'>

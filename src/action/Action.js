@@ -1,5 +1,7 @@
 import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
 
+import { toast } from "react-toastify";
+
 export const LoginAction = (params) => {
   console.log(params, 'loginAction')
   return {
@@ -70,16 +72,17 @@ export const CategoriesFilter = (params) => {
 
 export const ItemAddToCart = (params) => {
   console.log(params, 'ItemAddToCartItemAddToCart')
+  toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT});
   return{
     type: ITEM_ADD_TO_CART,
     payload:params
   }
 }
 export const ItemRemoveToCart = (params) => {
-  console.log(params, 'ItemRemoveToCarts')
+  toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT});
   return{
     type: ITEM_REMOVE_TO_CART,
-    payload:params
+    payload:params,
   }
 }
 export const ItemIncrease = (params) => {

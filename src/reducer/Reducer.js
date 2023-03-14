@@ -138,6 +138,7 @@ export const ItemsAddToCart = (state = itemList, action) => {
         }
       }
       case ITEM_REMOVE_TO_CART:{
+        console.log(action, 'ItemRemoveToCarts')
         let result = state.items.filter(item => item.id !== action.payload.id)
         localStorage.setItem('cartList', JSON.stringify(result))
         return{
