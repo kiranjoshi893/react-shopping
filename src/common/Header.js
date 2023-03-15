@@ -19,7 +19,7 @@ function Header() {
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
     <Navbar bg="white py-2" expand="lg">
-      <ToastContainer />
+      <ToastContainer autoClose={1000}/>
       <div className="container">
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
