@@ -27,7 +27,9 @@ export default function App(props) {
   const PrivateRoute = () => {
     return getState ? <Outlet /> : <Navigate to="/login" />;
   }
-  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  },[location.pathname])
   return (
     <div>
       {/* <BrowserRouter> */}
