@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, ToastContainer } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
@@ -93,6 +93,7 @@ const Login = (props) => {
     }, []);
     return (
         <div className='login-wrapper'>
+            {/* <ToastContainer autoClose={1000}/> */}
             <div className='w-100'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

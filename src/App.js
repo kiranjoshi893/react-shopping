@@ -13,6 +13,7 @@ import NavigationRoutes from './common/NavigationRoutes';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
 import Footer from './common/Footer';
+import { ToastContainer } from 'react-bootstrap';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
@@ -31,6 +32,7 @@ export default function App(props) {
     <div>
       {/* <BrowserRouter> */}
       <div>
+      <ToastContainer autoClose={1000}/>
       <Header />
       <Routes>
         {/* <Route exact path='/' element={<PrivateRoute/>}>

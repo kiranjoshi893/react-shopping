@@ -57,21 +57,24 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       return {
         ...state,
         accessToken: action.payload.data.access_token,
-        isLogin: localStorage.getItem('accessToken') ? true : false
+        isLogin: localStorage.getItem('accessToken') ? true : false,
+        toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT})
       }
     }
     case LOGIN_ERROR:{
       console.log('LoginReducer12')
       return{
         ...state,
-        error:action.payload
+        error:action.payload,
+        toast:toast.error(action.payload,{position: toast.POSITION.TOP_RIGHT})
       }
     }
     case LOGOUT : {
       return{
         ...state,
         accessToken:localStorage.clear(),
-        isLogin:false
+        isLogin:false,
+        toast:toast.error('Logout Successfull!',{position: toast.POSITION.TOP_RIGHT})
       }
     }
     default : 
