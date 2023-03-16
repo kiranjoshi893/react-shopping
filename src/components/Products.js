@@ -12,7 +12,7 @@ import ProductList from './ProductList';
     // const notify = () => toast("Wow so easy!");
     const location = useLocation()
     const {state} = location
-    console.log(state, 'propsprops111')
+    console.log(state, 'propsprops11124')
     const [clearFilter, setClearFilter] = useState('')
     const [showToast, setShowToast] = useState(false)
     const navigate = useNavigate()
