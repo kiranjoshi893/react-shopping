@@ -86,6 +86,7 @@ export const ItemRemoveToCart = (params) => {
   }
 }
 export const ItemIncrease = (params) => {
+  console.log(params, 'ItemIncrease::')
   return{
     type:ITEM_INCREASE,
     payload:params
