@@ -93,6 +93,7 @@ export const ItemIncrease = (params) => {
   }
 }
 export const ItemDecrease = (params) => {
+  console.log(params, 'allProduct2')
   return{
     type:ITEM_DECREASE,
     payload:params
