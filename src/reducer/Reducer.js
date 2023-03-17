@@ -190,17 +190,20 @@ export const AddItemToCartReducer = (state = productQty, action) => {
       }
       case ITEM_INCREASE:
         console.log(action.payload, 'allProduct1')
-        // state.product.id === action.payload.id ? state.product.qty += 1 : state.product.qty
+        const result1  = action.payload.qty >= 11 ? 10 : action.payload.qty += 1
         return{
           ...state,
-          qty:action.payload.qty += 1,
+          qty:result1,
+          error:result1 >= 10 ? 'Quantity can not be more than 10' : ''
         }
       case ITEM_DECREASE:{
         console.log(action.payload, 'allProduct2')
-        action.payload.qty < 1 ? 1 :action.payload.qty
+        const result1  = action.payload.qty <= 0 ? 1 : action.payload.qty -= 1
+        action.result
         return{
           ...state,
-          qty:action.payload.qty -= 1,
+          qty:result1,
+          error:result1 <= 1 ? 'Quantity can not be less than 1' : ''
         }
       }
     case INCREASE_QTY:
