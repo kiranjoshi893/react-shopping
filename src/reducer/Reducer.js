@@ -1,12 +1,16 @@
 import { json } from 'react-router';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
+
+const toastContentMain = <ToastContainer />
 const loginDetails = {
   isLogin:auth ? true : false,
   accessToken:'',
-  error:''
+  error:'',
+  toast:'',
+  toastContent:toastContentMain
 }
 const allProduct = {
   productList : [],
@@ -25,7 +29,8 @@ const cartList = JSON.parse(localStorage.getItem('cartList'))
 const itemList ={
   items: cartList ? cartList : [],
   filterItems: [],
-  toast:''
+  toast:'',
+  toastContent:toastContentMain
 }
 const categoriesData = {
   list: []
@@ -57,21 +62,24 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       return {
         ...state,
         accessToken: action.payload.data.access_token,
-        isLogin: localStorage.getItem('accessToken') ? true : false
+        isLogin: localStorage.getItem('accessToken') ? true : false,
+        toast:toast.success('Login Successfully!',{position: toast.POSITION.TOP_RIGHT}),
       }
     }
     case LOGIN_ERROR:{
       console.log('LoginReducer12')
       return{
         ...state,
-        error:action.payload
+        error:action.payload,
+        toast:toast.warning(action.payload,{position: toast.POSITION.TOP_RIGHT}),
       }
     }
     case LOGOUT : {
       return{
         ...state,
         accessToken:localStorage.clear(),
-        isLogin:false
+        isLogin:false,
+        toast:toast.error('Logout Successfully!',{position: toast.POSITION.TOP_RIGHT}),
       }
     }
     default : 
@@ -135,7 +143,7 @@ export const ItemsAddToCart = (state = itemList, action) => {
         localStorage.setItem('cartList', JSON.stringify(state.items))
         return{
           ...state,
-          toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT})
+          toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT}),
         }
       }
       case ITEM_REMOVE_TO_CART:{
@@ -145,7 +153,8 @@ export const ItemsAddToCart = (state = itemList, action) => {
         return{
           ...state,
           items:result,
-          toast: toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT})
+          toast: toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT}),
+          // toastContent: <ToastContainer />
         }
       }
       case ITEM_INCREASE:{

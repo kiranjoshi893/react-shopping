@@ -13,6 +13,7 @@ const Login = (props) => {
     const dispatch = useDispatch()
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const isLogin1 = useSelector((state) => state.LoginStore)
+    const Logintoast = useSelector((state) => state.LoginStore.toast)
     console.log(isLogin1, 'isLogin1')
     const loginHandler  = (data) => dispatch(LoginAction(data)) 
     const login = (data) => dispatch(LoginAction1(data))
@@ -93,6 +94,7 @@ const Login = (props) => {
     }, []);
     return (
         <div className='login-wrapper'>
+            {Logintoast}
             <div className='w-100'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

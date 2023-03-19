@@ -18,19 +18,23 @@ import Footer from './common/Footer';
 export default function App(props) {
   console.log(process.env, "asdasd");
   const getState = useSelector((state) => state.LoginStore.isLogin)
+  const cartItemList = useSelector((state) => state.ItemAddTOCart.toastContent)
+  const [hideToast, setHideToast] = useState(cartItemList)
   console.log(getState,  'getState')
   const location = useLocation()
-  const navigate = useNavigate()
   console.log(location,'navigate111111')
-  const [isFooter, setIsFooter] = useState(true)
   const PrivateRoute = () => {
     return getState ? <Outlet /> : <Navigate to="/login" />;
   }
-  
+  // useEffect(() => {
+  //   setHideToast('')
+  //   console.log(cartItemList, hideToast, 'cartItemList1111111')
+  // },[location])
   return (
     <div>
       {/* <BrowserRouter> */}
       <div>
+      {hideToast}
       <Header />
       <Routes>
         {/* <Route exact path='/' element={<PrivateRoute/>}>

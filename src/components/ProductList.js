@@ -11,19 +11,12 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
     const getData = props.data
     console.log(getData, 'props::::::::::')
     const dispatch = useDispatch()
-    const cartItem = useSelector((state) => state.ItemAddTOCart.validation)
     const itemsAddToCart = (data) => dispatch(ItemAddToCart(data))
     const goToDetailPage = (data) => {
         const filtertedURL = data.title.split(' ').join('-')
         console.log(filtertedURL, 'filtertedURL')
         navigate(`/products/${filtertedURL}`, {state:data})
     }
-    const itemsToCart = (data) =>{
-        itemsAddToCart(data)
-    }
-    // useEffect(() => {
-    //     setInterval(() => {console.log('sdssds')}, 5000);
-    // },[cartItem])
     return (
         <div className="product-wrap border h-100 mb-25" key={getData.id}>
             <div className="product-img">
