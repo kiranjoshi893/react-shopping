@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
-import { AddItemToCart, AddToCart, CartItem, CartQtyChange, IncreaseQty, ItemDecrease, ItemIncrease } from '../action/Action';
+import { AddItemToCart, AddToCart, CartItem, CartQtyChange, IncreaseQty, ItemAddToCart, ItemDecrease, ItemIncrease } from '../action/Action';
 import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
 import ProductSlider from '../common/ProductSlider';
 import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
@@ -16,7 +16,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
     const [error, setError] = useState(false)
     const navigate = useLocation()
     const dispatch  = useDispatch()
-    const addItemToCart = (data) => dispatch(AddItemToCart(data))
+    const addItemToCart = (data) => dispatch(ItemAddToCart(data))
     // const increaseQty = (data) => dispatch(IncreaseQty(data))
     const cartItems = (data) => dispatch(CartItem(data))
     const cartQtyChange = (data) => dispatch(CartQtyChange(data))
@@ -64,14 +64,15 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                             <div className="d-flex">
                                 <div className="tt-input-counter style-01 me-3">
                                     <span className='cursor-pointer' onClick={() => itemDecrease(state)}><MinusIcon /></span>
-                                    <input type="text" value={storeState.qty} onChange={(e) => onChangeHandler(e.target.value)} size="5" />
+                                    <input readOnly type="text" value={storeState.qty} onChange={(e) => onChangeHandler(e.target.value)} size="5" />
                                     <span className='cursor-pointer' onClick={() => itemIncrement(state)}><PlusIcon /></span>
                                 </div>
-                                <button className="btn btn-main py-3 px-3" onClick={() => addItemToCart(state)}>
+                                <button disabled={storeState.qty == 0 || storeState.qty == 11} className="btn btn-main py-3 px-3" onClick={() => addItemToCart(state)}>
                                     <BagIcon/> Add To Cart
                                 </button>
                             </div>
                             {error ? error : ''}
+                            {storeState.error ? <p className='small text-danger mb-0 pt-1'>{storeState.error}</p> : ''}
                         </div>
                     </div>
                 </div>
