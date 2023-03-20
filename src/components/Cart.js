@@ -7,11 +7,12 @@ import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
  const Cart = () => {
     const navigate = useLocation()
     const getData = useSelector(data => data.ItemAddTOCart.items)
+    const storeState = useSelector((state) => state.AddToCart)
     const dispatch = useDispatch()
-    const increaseItems = (data) => dispatch(ItemIncrease(data))
-    const decreaseItems = (data) => dispatch(ItemDecrease(data))
+    const itemIncrement = (data) => dispatch(ItemIncrease(data))
+    const itemDecrease = (data) => dispatch(ItemDecrease(data))
     const removeItem = (data) => dispatch(ItemRemoveToCart(data))
-    console.log(getData,  'getData::::')
+    console.log(storeState,  'getData::::')
     return (
         <>
         <BreadcrumbList url={navigate}/>
@@ -32,9 +33,9 @@ import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
                                 </div>
                                 <div className='col-md-3'>
                                     <div className='cart-qty d-flex float-end'>
-                                        <button className='btn' disabled={item.qty <= 1} onClick={() => decreaseItems(item)}><MinusIcon /></button>
+                                        <button className='btn' disabled={item.qty <= 1} onClick={() => itemDecrease(item)}><MinusIcon /></button>
                                         <input type='text' value={item.qty} onChange={() => console.log('s')} className="form-control"/>
-                                        <button className='btn' disabled={item.qty >= 10} onClick={() => increaseItems(item)}><PlusIcon /></button>
+                                        <button className='btn' disabled={item.qty >= 10} onClick={() => itemIncrement(item)}><PlusIcon /></button>
                                     </div>
                                     {item.qty > 11 ? 'Quantity can not be more than 10' : ''}
                                     {item.qty < 0 ? 'Quantity can not be less than 1' : ''}

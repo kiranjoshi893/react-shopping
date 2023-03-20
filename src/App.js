@@ -13,6 +13,7 @@ import NavigationRoutes from './common/NavigationRoutes';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
 import Footer from './common/Footer';
+import { ToastContainer } from 'react-bootstrap';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
@@ -26,15 +27,14 @@ export default function App(props) {
   const PrivateRoute = () => {
     return getState ? <Outlet /> : <Navigate to="/login" />;
   }
-  // useEffect(() => {
-  //   setHideToast('')
-  //   console.log(cartItemList, hideToast, 'cartItemList1111111')
-  // },[location])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  },[location.pathname])
   return (
     <div>
       {/* <BrowserRouter> */}
       <div>
-      {hideToast}
+      <ToastContainer autoClose={1000}/>
       <Header />
       <Routes>
         {/* <Route exact path='/' element={<PrivateRoute/>}>

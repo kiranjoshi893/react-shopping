@@ -23,11 +23,12 @@ const allProduct = {
 const productQty = {
   productWithID:'',
   product:[],
-  cartQTY: 1,
+  qty: 1,
+  error:''
 }
-const cartList = JSON.parse(localStorage.getItem('cartList'))
+
 const itemList ={
-  items: cartList ? cartList : [],
+  items: [],
   filterItems: [],
   toast:'',
   toastContent:toastContentMain
@@ -63,7 +64,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
         ...state,
         accessToken: action.payload.data.access_token,
         isLogin: localStorage.getItem('accessToken') ? true : false,
-        toast:toast.success('Login Successfully!',{position: toast.POSITION.TOP_RIGHT}),
+        toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT})
       }
     }
     case LOGIN_ERROR:{
@@ -71,7 +72,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       return{
         ...state,
         error:action.payload,
-        toast:toast.warning(action.payload,{position: toast.POSITION.TOP_RIGHT}),
+        toast:toast.error(action.payload,{position: toast.POSITION.TOP_RIGHT})
       }
     }
     case LOGOUT : {
@@ -79,7 +80,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
         ...state,
         accessToken:localStorage.clear(),
         isLogin:false,
-        toast:toast.error('Logout Successfully!',{position: toast.POSITION.TOP_RIGHT}),
+        toast:toast.error('Logout Successfull!',{position: toast.POSITION.TOP_RIGHT})
       }
     }
     default : 
@@ -138,41 +139,20 @@ export const AllProductReducer = (state = allProduct, action) => {
 export const ItemsAddToCart = (state = itemList, action) => {
   switch(action.type){
     case ITEM_ADD_TO_CART:{
-        const itemInCart = state.items.find((item) => item.id === action.payload.id);
-        itemInCart ? itemInCart.qty ++ : state.items.push({...action.payload, qty: 1})
-        localStorage.setItem('cartList', JSON.stringify(state.items))
+      const ifIdExist = state.items.find((items) => items.id === action.payload.id)
+      ifIdExist ? ifIdExist.qty ++ : state.items.push({...action.payload, qty:action.payload.qty})
         return{
           ...state,
           toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT}),
         }
       }
       case ITEM_REMOVE_TO_CART:{
-        console.log(action, 'ItemRemoveToCarts')
-        let result = state.items.filter(item => item.id !== action.payload.id)
-        localStorage.setItem('cartList', JSON.stringify(result))
+        const removeItem = state.items.filter((item) => item.id !== action.payload.id)
         return{
           ...state,
-          items:result,
+          items:removeItem,
           toast: toast.error('Item removed from cart',{position: toast.POSITION.TOP_RIGHT}),
           // toastContent: <ToastContainer />
-        }
-      }
-      case ITEM_INCREASE:{
-        console.log(action.payload,  'ITEM_INCREASE')
-        const result = state.items.map((item) => item.id === action.payload.id ? {...item, qty: item.qty >= 10 ? 10 : item.qty + 1} : item)
-        localStorage.setItem('cartList', JSON.stringify(result))
-        return{
-          ...state,
-          items: result,
-        }
-      }
-      case ITEM_DECREASE:{
-        // const test = item.qty < 1 ? 1 : item.qty - 1
-        const result = state.items.map(((item) => item.id === action.payload.id ? {...item, qty: item.qty <= 1 ? 1 : item.qty - 1} : item))
-        localStorage.setItem('cartList', JSON.stringify(result))
-        return{
-          ...state,
-          items:result
         }
       }
       default:{
@@ -189,21 +169,29 @@ export const ItemsAddToCart = (state = itemList, action) => {
 export const AddItemToCartReducer = (state = productQty, action) => {
   switch (action.type){
     case CART_ITEM:
-      console.log(allProduct , 'action::::::::')
+      console.log(action.payload, 'allProduct')
       return{
-        ...state,
-        productWithID:action.payload,   
-        product:state.productList     
+        ...state, 
+        product:action.payload,
+        qty:1
       }
-    case INCREASE_QTY:
-      return{
-        ...state,
-        cartQTY:state.cartQTY >= 10 ? 10 : state.cartQTY + 1
-      }
-      case DECREASE_QTY:
-      return{
-        ...state,
-        cartQTY:state.cartQTY <= 1 ? 10 : state.cartQTY - 1
+      case ITEM_INCREASE:
+        console.log(action.payload, 'allProduct112')
+        const result1  = action.payload.qty >= 11 ? 11 : action.payload.qty += 1
+        return{
+          ...state,
+          qty:result1,
+          error:result1 >= 11 ? 'Quantity can not be more than 10' : ''
+        }
+      case ITEM_DECREASE:{
+        console.log(action.payload, 'allProduct2')
+        const result1  = action.payload.qty <= 0 ? 0 : action.payload.qty -= 1
+        action.result
+        return{
+          ...state,
+          qty:result1,
+          error:result1 <= 0 ? 'Quantity can not be less than 1' : ''
+        }
       }
       case CHANGE_QTY:
       return{

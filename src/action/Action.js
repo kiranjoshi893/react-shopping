@@ -69,7 +69,6 @@ export const CategoriesFilter = (params) => {
   }
 }
 
-
 export const ItemAddToCart = (params) => {
   console.log(params, 'ItemAddToCartItemAddToCart')
   // toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT});
@@ -86,12 +85,14 @@ export const ItemRemoveToCart = (params) => {
   }
 }
 export const ItemIncrease = (params) => {
+  console.log(params, 'ItemIncrease::')
   return{
     type:ITEM_INCREASE,
     payload:params
   }
 }
 export const ItemDecrease = (params) => {
+  console.log(params, 'allProduct2')
   return{
     type:ITEM_DECREASE,
     payload:params
@@ -106,43 +107,6 @@ export const RemoveAllItems = (params) => {
 export const LogoutAction = (params) => {
   return{
     type:LOGOUT,
-    payload:params
-  }
-}
-
-
-
-
-
-
-
-export const IncreaseQty = (params) => {
-  return {
-    type:INCREASE_QTY,
-    payload:params
-  }
-}
-export const DecreaseQty = (params) => {
-  return {
-    type:DECREASE_QTY,
-    payload:params
-  }
-}
-export const AddItemToCart = (params) => {
-  return {
-    type:ADD_TO_CART,
-    payload:params
-  }
-}
-export const CartItem = (params) => {
-  return {
-    type:CART_ITEM,
-    payload:params
-  }
-}
-export const CartQtyChange = (params) => {
-  return {
-    type:CHANGE_QTY,
     payload:params
   }
 }
