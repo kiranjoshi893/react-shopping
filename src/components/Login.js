@@ -94,7 +94,7 @@ const Login = (props) => {
     }, []);
     return (
         <div className='login-wrapper'>
-            {/* <ToastContainer autoClose={1000}/> */}
+            {/* <ToastContainer autoclose={1000}/> */}
             <div className='w-100'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

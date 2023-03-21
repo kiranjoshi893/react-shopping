@@ -68,7 +68,12 @@ export const CategoriesFilter = (params) => {
     payload:params
   }
 }
-
+export const AllItems = (params) => {
+  return{
+    type:CART_ITEM,
+    payload:params
+  }
+}
 export const ItemAddToCart = (params) => {
   console.log(params, 'ItemAddToCartItemAddToCart')
   // toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT});

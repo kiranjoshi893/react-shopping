@@ -26,33 +26,18 @@ const productQty = {
   qty: 1,
   error:''
 }
-
+const getItems = JSON.parse(localStorage.getItem('CartList'))
+console.log(getItems, 'getItems')
 const itemList ={
-  items: [],
+  items: getItems ? getItems : [],
   filterItems: [],
   toast:'',
+  qty: 1,
   toastContent:toastContentMain
 }
 const categoriesData = {
   list: []
 }
-// export const LoginReducer = (state = loginDetails, action) => {
-//   console.log(action, 'LoginReducer')
-//   switch (action.type){
-//     case LOGIN: 
-//     let getToken = action.payload.stsTokenManager.accessToken
-//     localStorage.setItem('accessToken', JSON.stringify(getToken))
-//     return {
-//       ...state,
-//       accessToken: action.payload.stsTokenManager.accessToken,
-//       isLogin: localStorage.getItem('accessToken') ? true : false
-//     }
-//     default : 
-//       return {
-//         ...state
-//       }
-//   }
-// }
 
 export const LoginReducer1 = (state = loginDetails, action) => {
   switch (action.type){
@@ -89,22 +74,6 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       }
   }
 }
-// export const LogoutReducer = (state=loginDetails, action) => {
-//   switch(action.type){
-//     case LOGOUT : {
-//       return{
-//         ...state,
-//         accessToken:localStorage.clear(),
-//         isLogin:localStorage.getItem('accessToken') ? true : false
-//       }
-//     }
-//     default:{
-//       return{
-//         ...state
-//       }
-//     }
-//   }
-// }
 
 
 export const AllProductReducer = (state = allProduct, action) => {
@@ -138,16 +107,55 @@ export const AllProductReducer = (state = allProduct, action) => {
 
 export const ItemsAddToCart = (state = itemList, action) => {
   switch(action.type){
+    case CART_ITEM:
+      console.log(action.payload, 'allProduct')
+      return{
+        ...state,
+        qty:1
+      }
     case ITEM_ADD_TO_CART:{
       const ifIdExist = state.items.find((items) => items.id === action.payload.id)
-      ifIdExist ? ifIdExist.qty ++ : state.items.push({...action.payload, qty:action.payload.qty})
+      localStorage.setItem('CartList', JSON.stringify(state.items))
+      let sum = ifIdExist?.qty + action.payload.qty
+      console.log(action.payload.qty, 'action.payload.qty')
+      if(ifIdExist?.qty >= 10 || sum >= 11){
+        ifIdExist ? action.payload.qty : state.items.push({...action.payload, qty:action.payload.qty})
+        return{
+          ...state,
+          toast:toast.error('can not add item more than 10',{position: toast.POSITION.TOP_RIGHT}),
+        }
+      }
+      else{
+        ifIdExist ? ifIdExist.qty += action.payload.qty : state.items.push({...action.payload, qty:action.payload.qty})
         return{
           ...state,
           toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT}),
         }
       }
+      }
+      case ITEM_INCREASE:
+        console.log(state, 'allProduct112')
+        const result1  = action.payload.qty >= 11 ? 11 : action.payload.qty += 1
+        localStorage.setItem('CartList', JSON.stringify(state.items))
+        return{
+          ...state,
+          qty:result1,
+          error:result1 >= 11 ? 'Quantity can not be more than 10' : '',
+          // toast:toast.success('Item added to cart',{position: toast.POSITION.TOP_RIGHT}),
+        }
+      case ITEM_DECREASE:{
+        console.log(action.payload, 'allProduct2')
+        const result1  = action.payload.qty <= 0 ? 0 : action.payload.qty -= 1
+        action.result
+        return{
+          ...state,
+          qty:result1,
+          error:result1 <= 0 ? 'Quantity can not be less than 1' : ''
+        }
+      }
       case ITEM_REMOVE_TO_CART:{
         const removeItem = state.items.filter((item) => item.id !== action.payload.id)
+        localStorage.setItem('CartList', JSON.stringify(removeItem))
         return{
           ...state,
           items:removeItem,
@@ -175,24 +183,24 @@ export const AddItemToCartReducer = (state = productQty, action) => {
         product:action.payload,
         qty:1
       }
-      case ITEM_INCREASE:
-        console.log(action.payload, 'allProduct112')
-        const result1  = action.payload.qty >= 11 ? 11 : action.payload.qty += 1
-        return{
-          ...state,
-          qty:result1,
-          error:result1 >= 11 ? 'Quantity can not be more than 10' : ''
-        }
-      case ITEM_DECREASE:{
-        console.log(action.payload, 'allProduct2')
-        const result1  = action.payload.qty <= 0 ? 0 : action.payload.qty -= 1
-        action.result
-        return{
-          ...state,
-          qty:result1,
-          error:result1 <= 0 ? 'Quantity can not be less than 1' : ''
-        }
-      }
+      // case ITEM_INCREASE:
+      //   console.log(action.payload, 'allProduct112')
+      //   const result1  = action.payload.qty >= 11 ? 11 : action.payload.qty += 1
+      //   return{
+      //     ...state,
+      //     qty:result1,
+      //     error:result1 >= 11 ? 'Quantity can not be more than 10' : ''
+      //   }
+      // case ITEM_DECREASE:{
+      //   console.log(action.payload, 'allProduct2')
+      //   const result1  = action.payload.qty <= 0 ? 0 : action.payload.qty -= 1
+      //   action.result
+      //   return{
+      //     ...state,
+      //     qty:result1,
+      //     error:result1 <= 0 ? 'Quantity can not be less than 1' : ''
+      //   }
+      // }
       case CHANGE_QTY:
       return{
         ...state,

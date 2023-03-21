@@ -34,7 +34,7 @@ export default function App(props) {
     <div>
       {/* <BrowserRouter> */}
       <div>
-      <ToastContainer autoClose={1000}/>
+      <ToastContainer autoclose={1000}/>
       <Header />
       <Routes>
         {/* <Route exact path='/' element={<PrivateRoute/>}>
