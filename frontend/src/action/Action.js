@@ -3,7 +3,7 @@ import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO
 import { toast } from "react-toastify";
 
 export const LoginAction = (params) => {
-  console.log(params, 'loginAction')
+  console.log(params, 'loginAction111111111111')
   return {
     type: LOGIN,
     payload: params,

@@ -14,6 +14,8 @@ import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
 import Footer from './common/Footer';
 import { ToastContainer } from 'react-bootstrap';
+// import { getAuth } from 'firebase/auth';
+// import {app} from './firebase'
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
@@ -34,7 +36,7 @@ export default function App(props) {
     <div>
       {/* <BrowserRouter> */}
       <div>
-      <ToastContainer autoclose={1000}/>
+      {/* <ToastContainer autoclose={3000}/> */}
       <Header />
       <Routes>
         {/* <Route exact path='/' element={<PrivateRoute/>}>

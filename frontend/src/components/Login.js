@@ -1,12 +1,13 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
-import { Button, Form, ToastContainer } from 'react-bootstrap';
+import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
-import { auth } from '../firebase';
-import { login } from '../services/Auth';
+// import { auth } from '../firebase';
+import {app} from '../firebase'
 import { loginService } from '../services/Services';
+const auth = getAuth(app);
 
 const Login = (props) => {
     const navigate = useNavigate()
@@ -59,31 +60,31 @@ const Login = (props) => {
             })
         }
         else{
-            loginService(inputValue).then(res => {
-                console.log(res, 'loginService')
-                login(res)
-                loginError(res.message)
-                setDisableButton(false)
-                navigate('/')
-            })
-            .catch((error) => {
-                setDisableButton(false)
-                console.log('error', error)
-                setInputValue({...inputValue, backendError: error.message})
-            })
-
-            // authorization with firework
-            // signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
+            // loginService(inputValue).then(res => {
+            //     console.log(res, 'loginService')
+            //     login(res)
+            //     loginError(res.message)
             //     setDisableButton(false)
-            //     loginHandler(res.user)
-            //     // console.log(res.user)
             //     navigate('/')
-                
-            // }).catch((error) => {
+            // })
+            // .catch((error) => {
             //     setDisableButton(false)
             //     console.log('error', error)
             //     setInputValue({...inputValue, backendError: error.message})
             // })
+
+            // authorization with firework
+            signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
+                setDisableButton(false)
+                loginHandler(res.user)
+                console.log(res, 'dssssssssssssssssssssssss')
+                navigate('/')
+                
+            }).catch((error) => {
+                setDisableButton(false)
+                console.log('error11111111111', error)
+                setInputValue({...inputValue, backendError: error.message})
+            })
         }
     }
     useEffect(() => {
@@ -93,8 +94,7 @@ const Login = (props) => {
         }
     }, []);
     return (
-        <div className='login-wrapper'>
-            {/* <ToastContainer autoclose={1000}/> */}
+        <div className='login-wrapper bg-white'>
             <div className='w-100'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

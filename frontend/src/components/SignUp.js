@@ -1,10 +1,12 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile,  getAuth } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+// import { auth } from '../firebase';
+import { app } from '../firebase'
 
+const auth = getAuth(app);
 const SignUp = (props) => {
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const navigate = useNavigate()
@@ -81,7 +83,7 @@ const SignUp = (props) => {
         }
     }, []);
     return (
-        <div className='login-wrapper'>
+        <div className='login-wrapper bg-white'>
             <div className='w-100'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Signup</h3>
                  <Form.Group className="mb-3" controlId="formBasicName">

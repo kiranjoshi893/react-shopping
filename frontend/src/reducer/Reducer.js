@@ -42,14 +42,14 @@ const categoriesData = {
 export const LoginReducer1 = (state = loginDetails, action) => {
   switch (action.type){
     case LOGIN: {
-      console.log('LoginReducer1')
-      let getToken = action.payload.data.access_token
+      console.log('LoginReducer1', action.payload.accessToken)
+      let getToken = action.payload.accessToken
       localStorage.setItem('accessToken', JSON.stringify(getToken))
       return {
         ...state,
-        accessToken: action.payload.data.access_token,
+        accessToken: action.payload.accessToken,
         isLogin: localStorage.getItem('accessToken') ? true : false,
-        toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT})
+        toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT}),
       }
     }
     case LOGIN_ERROR:{
