@@ -10,7 +10,7 @@ const loginDetails = {
   accessToken:'',
   error:'',
   toast:'',
-  // toastContent:toastContentMain
+  loginDetails:JSON.parse(localStorage.getItem('useDetails'))
 }
 const signupDetails = {
   toast:'',
@@ -48,6 +48,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       console.log('LoginReducer1', action.payload)
       let getToken = action.payload.accessToken
       localStorage.setItem('accessToken', JSON.stringify(getToken))
+      localStorage.setItem('useDetails', JSON.stringify(action.payload))
       return {
         ...state,
         accessToken: action.payload.accessToken,

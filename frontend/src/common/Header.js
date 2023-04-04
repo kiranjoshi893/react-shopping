@@ -9,10 +9,11 @@ import { BagIcon, CloseIcon } from './Svg'
 
 function Header() {
   const getDataFromStore = useSelector(state => state.ItemAddTOCart)
-  const getState = useSelector((state) => state.LoginStore.isLogin)
+  const getState = useSelector((state) => state.LoginStore)
   const {items} = getDataFromStore
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  console.log(useSelector((state) => state.LoginStore),  'getState::::::::::')
   const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
   const logout = (data) => dispatch(LogoutAction(data))
   const [show, setShow] = useState(true)
@@ -24,7 +25,6 @@ function Header() {
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-        {/* {getState ?  */}
           <Nav className="me-auto">
             {NavigationRoutes.map((data) => {
               return (
@@ -44,7 +44,8 @@ function Header() {
           </Nav>
           {/* : '' } */}
           <Nav className="ms-auto">
-            <Link className='nav-link' to="/cart"><span className='cursor-pointer nav-link'><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></span></Link>
+            <Link className='nav-link' to="/cart"><span className='cursor-pointer'><BagIcon />
+            {!items.length < 1 ? <small className="badge rounded-pill bg-danger">{items.length}</small>: ''}</span></Link>
           {/* <>
                 {items.length === 0 ? 
                 <span className='cursor-pointer nav-link'><BagIcon /></span>
@@ -72,13 +73,19 @@ function Header() {
                 </NavDropdown>
                 }
               </> */}
-            {!getState ? 
+            {!getState.isLogin ? 
               <>
                 <Link className='nav-link' to="/login">Login</Link>
                 <Link className='nav-link' to="/signup">SignUp</Link>
               </> 
                :
-               <Link className='nav-link' to="/login" onClick={() => logout()}>Logout</Link>
+               <>
+                  <NavDropdown className='cart-dropdown' show={show}  title={<span>Hello, {getState.loginDetails.displayName}</span>}>
+                    <Link className='nav-link' to="/profile">Profile</Link>
+                    <Link className='nav-link' to="/login" onClick={() => logout()}>Logout</Link>
+                  </NavDropdown>
+               </>
+               
             }
           </Nav>
         </Navbar.Collapse>
