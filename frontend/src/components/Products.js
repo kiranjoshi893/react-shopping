@@ -36,8 +36,8 @@ import ProductList from './ProductList';
     }
     useEffect(() => {
         getAllCategories('/')
-        getProductByfilter(state?.id)
-        setClearFilter(state?.id)
+        getProductByfilter(state?.name)
+        setClearFilter(state?.name)
     },[])
     return <div>
         <BreadcrumbList url={location}/>

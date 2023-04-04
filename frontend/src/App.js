@@ -19,7 +19,7 @@ import { ToastContainer } from 'react-bootstrap';
 // import { Navigate } from 'react-router-dom';
 
 export default function App(props) {
-  console.log(process.env, "asdasd");
+  console.log(process.env, "environment");
   const getState = useSelector((state) => state.LoginStore.isLogin)
   const cartItemList = useSelector((state) => state.ItemAddTOCart.toastContent)
   const [hideToast, setHideToast] = useState(cartItemList)

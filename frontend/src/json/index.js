@@ -1,9 +1,10 @@
-const categories = require('./categories.json');
-const products = require('./products.json');
-// Something more
+const jsonServer = require('json-server')
+const server = jsonServer.create()
+const router = jsonServer.router('./db.json')
+const middlewares = jsonServer.defaults()
 
-module.exports = () => ({
-  categories: categories,
-  products: products
-  // Something more
-});
+server.use(middlewares)
+server.use(router)
+server.listen(4000, () => {
+  console.log('JSON Server is running')
+})

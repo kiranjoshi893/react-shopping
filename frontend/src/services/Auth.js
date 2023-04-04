@@ -41,7 +41,7 @@ export const getProductByfilter = async(params) => {
     const dispatch = Store.dispatch
     const storeProductWait = (data) => dispatch((AllProductWait(data)))
     const storeProduct = (data) => dispatch((AllProductList(data)))
-    const paramsList = params === undefined ? '' : `/?categoryId=${params}`
+    const paramsList = params === undefined ? '' : `?category.name=${params}`
     storeProductWait(true)
     await filterByCategoryProducts(paramsList).then(res => {
         console.log(res, 'filterByCategoryProducts')
