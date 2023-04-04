@@ -1,14 +1,19 @@
 import { createUserWithEmailAndPassword, updateProfile,  getAuth } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Button, Form, ToastContainer } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import {SignUpAction,  SignupError } from '../action/Action';
 // import { auth } from '../firebase';
-import { app } from '../firebase'
+import { app } from '../Firebase'
 
 const auth = getAuth(app);
 const SignUp = (props) => {
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
+    const dispatch  = useDispatch()
+    const signupAction = (data) => dispatch(SignUpAction(data))
+    const signupErrorAction = (data) => dispatch(SignupError(data))
     const navigate = useNavigate()
     const [inputValue, setInputValue] = useState({
         name:'',
@@ -64,15 +69,20 @@ const SignUp = (props) => {
                 setDisableButton(false)
                 console.log(res.user)
                 const data = res.user;
-                updateProfile(data, {
-                    displayName: inputValue.name
-                })
+                // updateProfile(data, {
+                //     displayName: inputValue.name
+                // })
+                signupAction(res.user)
                 navigate('/login')
+                toast.success('Signup Successfull!',{position: toast.POSITION.TOP_RIGHT})
                 
             }).catch((error) => {
                 setDisableButton(false)
-                console.log('error', error)
-                setInputValue({...inputValue, backendError: error.message})
+                const errorMsg = error.code.replaceAll('auth/', '').replaceAll('-', ' ')
+                console.log('error', errorMsg)
+                signupErrorAction(errorMsg)
+                setInputValue({...inputValue, backendError: errorMsg})
+                // toast.error('Signup Failed!',{position: toast.POSITION.TOP_RIGHT})
             })
         }
     }

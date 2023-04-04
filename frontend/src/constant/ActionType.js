@@ -1,6 +1,8 @@
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const SIGNUP = 'SIGNUP';
+export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const ALL_PRODUCTS = 'ALL_PRODUCTS';
 export const ALL_PRODUCTS_ERROR = 'ALL_PRODUCTS_ERROR';
 export const ALL_PRODUCTS_WAIT = 'ALL_PRODUCTS_WAIT';

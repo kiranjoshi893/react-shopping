@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import {AllItems, ItemAddToCart, ItemDecrease, ItemIncrease } from '../action/Action';
 import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
+import ItemQtyIncreaseDecrease from '../common/ItemQtyIncreaseDecrease';
 import ProductSlider from '../common/ProductSlider';
 import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
 // import { getAllProduct } from '../services/Auth';
@@ -40,7 +41,7 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                                 <Start className="me-2" />
                             </div>
                             <div className="tt-wrapper mb-4">{state.description}</div>
-                            <div className="d-flex">
+                            {/* <div className="d-flex">
                                 <div className="tt-input-counter style-01 me-3">
                                     <span className='cursor-pointer' onClick={() => itemDecrease(state)}><MinusIcon /></span>
                                     <input readOnly type="text" value={prdQty.qty} onChange={(e) => onChangeHandler(e.target.value)} size="5" />
@@ -50,7 +51,8 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
                                     <BagIcon/> Add To Cart
                                 </button>
                             </div>
-                            {prdQty.error ? <p className='small text-danger mb-0 pt-1'>{prdQty.error}</p> : ''}
+                            {prdQty.error ? <p className='small text-danger mb-0 pt-1'>{prdQty.error}</p> : ''} */}
+                            <ItemQtyIncreaseDecrease/>
                         </div>
                     </div>
                 </div>

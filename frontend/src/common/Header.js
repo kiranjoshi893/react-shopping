@@ -19,7 +19,7 @@ function Header() {
   // console.log(process.env.REACT_APP_API_PATH, 'env:::')
   return (
     <Navbar bg="white py-2" expand="lg">
-      <ToastContainer autoclose={1000}>dfdfd dfdfdf</ToastContainer>
+      <ToastContainer autoClose={800}/>
       <div className="container">
         <Navbar.Brand className='mr-4 pe-5'>Kk</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -44,7 +44,8 @@ function Header() {
           </Nav>
           {/* : '' } */}
           <Nav className="ms-auto">
-          <>
+            <Link className='nav-link' to="/cart"><span className='cursor-pointer nav-link'><BagIcon /><small className="badge rounded-pill bg-danger">{items.length}</small></span></Link>
+          {/* <>
                 {items.length === 0 ? 
                 <span className='cursor-pointer nav-link'><BagIcon /></span>
                 : 
@@ -70,7 +71,7 @@ function Header() {
                   {items.length >= 4 ? <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View all</Link> : <Link to="/cart" className='text-center nav-link border-top fs-6' onClick={() => navigate('/cart')}>View cart</Link>}
                 </NavDropdown>
                 }
-              </>
+              </> */}
             {!getState ? 
               <>
                 <Link className='nav-link' to="/login">Login</Link>

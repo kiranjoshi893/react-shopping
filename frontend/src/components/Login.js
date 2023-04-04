@@ -1,15 +1,18 @@
-import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
+// import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
 import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
 // import { auth } from '../firebase';
-import {app} from '../firebase'
+import {app, useFirebase} from '../Firebase'
 import { loginService } from '../services/Services';
 const auth = getAuth(app);
 
 const Login = (props) => {
+    const firebase = useFirebase()
+    console.log(firebase, 'firebase121212')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
@@ -60,30 +63,17 @@ const Login = (props) => {
             })
         }
         else{
-            // loginService(inputValue).then(res => {
-            //     console.log(res, 'loginService')
-            //     login(res)
-            //     loginError(res.message)
-            //     setDisableButton(false)
-            //     navigate('/')
-            // })
-            // .catch((error) => {
-            //     setDisableButton(false)
-            //     console.log('error', error)
-            //     setInputValue({...inputValue, backendError: error.message})
-            // })
-
-            // authorization with firework
-            signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
+            firebase.loginInWithEmailAndPassword(inputValue.email, inputValue.password).then((res) => {
                 setDisableButton(false)
                 loginHandler(res.user)
-                console.log(res, 'dssssssssssssssssssssssss')
+                console.log(res, 'error11111111111')
                 navigate('/')
                 
             }).catch((error) => {
                 setDisableButton(false)
-                console.log('error11111111111', error)
-                setInputValue({...inputValue, backendError: error.message})
+                const formatingMessage = error.code.replace('auth/', '').replaceAll('-',  ' ')
+                console.log('error11111111111', formatingMessage)
+                setInputValue({...inputValue, backendError: formatingMessage})
             })
         }
     }

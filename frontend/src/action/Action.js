@@ -1,4 +1,4 @@
-import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
+import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, LOGIN_ERROR, LOGOUT, SIGNUP, SIGNUP_ERROR} from '../constant/ActionType';
 
 import { toast } from "react-toastify";
 
@@ -19,12 +19,26 @@ export const LoginAction1 = (params) => {
 };
 
 export const LoginError = (params) => {
-  console.log(params, 'loginAction')
+  console.log(params, 'loginActionError')
   return {
     type: LOGIN_ERROR,
     payload: params,
   };
 };
+
+export const SignUpAction = (params) => {
+  return{
+    type: SIGNUP,
+    payload: params
+  }
+}
+export const SignupError = (params) => {
+  return{
+    type:SIGNUP_ERROR,
+    payload:params
+  }
+}
+
 
 export const AllProductList = (params) => {
   return{

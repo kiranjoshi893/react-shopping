@@ -1,6 +1,6 @@
 import { json } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
-import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT} from '../constant/ActionType';
+import {ADD_ITEMS_TO_CART, ADD_TO_CART, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, CART_ITEM, CHANGE_QTY, DECREASE_QTY, INCREASE_QTY, ITEM_ADD_TO_CART, ITEM_DECREASE, ITEM_INCREASE, ITEM_REMOVE_TO_CART, LOGIN, LOGIN_ERROR, LOGOUT, SIGNUP, SIGNUP_ERROR} from '../constant/ActionType';
 console.log(localStorage.getItem('accessToken'), 'saddadasd')
 let auth = localStorage.getItem('accessToken')
 
@@ -10,7 +10,10 @@ const loginDetails = {
   accessToken:'',
   error:'',
   toast:'',
-  toastContent:toastContentMain
+  // toastContent:toastContentMain
+}
+const signupDetails = {
+  toast:'',
 }
 const allProduct = {
   productList : [],
@@ -42,7 +45,7 @@ const categoriesData = {
 export const LoginReducer1 = (state = loginDetails, action) => {
   switch (action.type){
     case LOGIN: {
-      console.log('LoginReducer1', action.payload.accessToken)
+      console.log('LoginReducer1', action.payload)
       let getToken = action.payload.accessToken
       localStorage.setItem('accessToken', JSON.stringify(getToken))
       return {
@@ -75,6 +78,28 @@ export const LoginReducer1 = (state = loginDetails, action) => {
   }
 }
 
+// export const SignupReducer = (state = signupDetails, action) => {
+//   switch(action.type){
+//     case SIGNUP:{
+//       return{
+//         ...state,
+//         toast:toast.success('Signup Successfull!',{position: toast.POSITION.TOP_RIGHT})
+//       }
+//     }
+//     case SIGNUP_ERROR:{
+//       return{
+//         ...state,
+//         error:action.payload,
+//         toast:toast.error('Signup Failed!',{position: toast.POSITION.TOP_RIGHT})
+//       }
+//     }
+//     default:{
+//       return{
+//         ...state
+//       }
+//     }
+//   }
+// }
 
 export const AllProductReducer = (state = allProduct, action) => {
   switch (action.type){
