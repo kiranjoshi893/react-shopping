@@ -6,10 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {SignUpAction,  SignupError } from '../action/Action';
 // import { auth } from '../firebase';
-import { app } from '../Firebase'
 import { signupService } from '../services/Services';
 
-const auth = getAuth(app);
 const SignUp = (props) => {
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const dispatch  = useDispatch()

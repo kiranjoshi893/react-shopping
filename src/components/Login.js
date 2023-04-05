@@ -1,17 +1,11 @@
-// import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
 import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
-import {app, useFirebase} from '../Firebase'
 import { loginService } from '../services/Services';
-const auth = getAuth(app);
 
 const Login = (props) => {
-    const firebase = useFirebase()
-    console.log(firebase, 'firebase121212')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
