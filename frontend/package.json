@@ -2,6 +2,8 @@
 {
   "name": "react-ts",
   "version": "0.0.0",
+  "private": false,
+  "homepage": "https://kiranjoshi893.github.io/react-shopping/",
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@types/react": "^18.0.8",

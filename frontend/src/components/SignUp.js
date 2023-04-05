@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import {SignUpAction,  SignupError } from '../action/Action';
 // import { auth } from '../firebase';
 import { app } from '../Firebase'
+import { signupService } from '../services/Services';
 
 const auth = getAuth(app);
 const SignUp = (props) => {
@@ -65,24 +66,18 @@ const SignUp = (props) => {
             })
         }
         else{
-            createUserWithEmailAndPassword(auth, inputValue.email, inputValue.password, inputValue.name).then((res) => {
-                setDisableButton(false)
-                console.log(res.user)
-                const data = res.user;
-                // updateProfile(data, {
-                //     displayName: inputValue.name
-                // })
-                signupAction(res.user)
+            signupService(inputValue).then(res => {
+                console.log(res, 'inputValueinputValueinputValue')
+                signupAction(res.data)
                 navigate('/login')
-                toast.success('Signup Successfull!',{position: toast.POSITION.TOP_RIGHT})
-                
-            }).catch((error) => {
+                toast.success('Signup Successfully!')
+            })
+            .catch((error) => {
+                console.log(error.response.data, 'inputValueinputValueinputValueError')
+                signupErrorAction(error.response.data)
+                setInputValue({...inputValue, backendError:error.response.data})
+                toast.error(error.response.data)
                 setDisableButton(false)
-                const errorMsg = error.code.replaceAll('auth/', '').replaceAll('-', ' ')
-                console.log('error', errorMsg)
-                signupErrorAction(errorMsg)
-                setInputValue({...inputValue, backendError: errorMsg})
-                // toast.error('Signup Failed!',{position: toast.POSITION.TOP_RIGHT})
             })
         }
     }
@@ -93,8 +88,8 @@ const SignUp = (props) => {
         }
     }, []);
     return (
-        <div className='login-wrapper bg-white'>
-            <div className='w-100'>
+        <div className='login-wrapper'>
+            <div className='w-100 bg-white'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Signup</h3>
                  <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>

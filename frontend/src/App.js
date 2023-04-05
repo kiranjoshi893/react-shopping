@@ -33,19 +33,9 @@ export default function App(props) {
     window.scrollTo(0, 0)
   },[location.pathname])
   return (
-    <div>
-      {/* <BrowserRouter> */}
-      <div>
-      {/* <ToastContainer autoclose={3000}/> */}
+      <>
       <Header />
       <Routes>
-        {/* <Route exact path='/' element={<PrivateRoute/>}>
-          {NavigationRoutes.map((data) => {
-            return <Route key={data.name} exact path={data.path} element={data.Component}/>
-          })}
-          <Route path="/products/:id" element={<ProductDetails />}/>
-          <Route path="/cart" element={<Cart />}/>
-        </Route> */}
           {NavigationRoutes.map((data) => {
             return <Route key={data.name} exact path={data.path} element={data.Component}/>
           })}
@@ -60,7 +50,6 @@ export default function App(props) {
       </Routes>
       {/* {getState ? <Footer /> : '' } */}
       <Footer />
-    </div>
-    </div>
+    </>
   );
 }

@@ -1,14 +1,59 @@
 {
   "users": [
     {
+      "email": "kiran@yopmail.com",
+      "password": "$2a$10$gpM5.OcwSnm0Eu1zMjHgHuWRYzRi6x1caGyBiVckL0V181.yyDklC",
+      "name": "Kiran",
+      "nameError": "",
+      "emailError": "",
+      "passwordError": "",
+      "loading": false,
+      "backendError": "",
+      "id": 1
+    },
+    {
       "email": "test@yopmail.com",
-      "password": "$2a$10$MuNsRYW1BPHpoyTL97XlYuNnXN5IBVsyX/YFK52JdLcT3ZcZqFa6W",
+      "password": "$2a$10$Ua5L6jYfe9Uwaz03cS08KeIxAAII5baBdoxsLsF902gix5CJNYKxm",
+      "name": "Test",
+      "nameError": "",
+      "emailError": "",
+      "passwordError": "",
+      "loading": false,
+      "backendError": "",
       "id": 2
     },
     {
-      "email": "test3@yopmail.com",
-      "password": "$2a$10$ng2vS28pCUDJjpSUmegWAe7Zq.3ZBtTcfuPIPGWCOqF1KH2gpbVj6",
+      "email": "test1@yopmail.com",
+      "password": "$2a$10$NtiRihD3h7YN.ROdj6eZV.QOR0XDKIiyV/MYx.JLyZvc8p391e89a",
+      "name": "Test1",
+      "nameError": "",
+      "emailError": "",
+      "passwordError": "",
+      "loading": false,
+      "backendError": "",
       "id": 3
+    },
+    {
+      "email": "test2@yopmail.com",
+      "password": "$2a$10$CIn0Gq..qbbZux7KnMlgV.xVTRNGiVQUJut3TFyLEdbt91t5hmMzK",
+      "name": "test2",
+      "nameError": "",
+      "emailError": "",
+      "passwordError": "",
+      "loading": false,
+      "backendError": "",
+      "id": 4
+    },
+    {
+      "email": "test3@yopmail.com",
+      "password": "$2a$10$f0B416grEBLWi5XEpK03HOWQVzbExBlUXVs9wNPo2jnwbmQe9nrL.",
+      "name": "Test3",
+      "nameError": "",
+      "emailError": "",
+      "passwordError": "",
+      "loading": false,
+      "backendError": "",
+      "id": 5
     }
   ],
   "products": [

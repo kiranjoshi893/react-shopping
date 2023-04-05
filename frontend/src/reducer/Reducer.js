@@ -10,7 +10,7 @@ const loginDetails = {
   accessToken:'',
   error:'',
   toast:'',
-  loginDetails:JSON.parse(localStorage.getItem('useDetails'))
+  userProfile:JSON.parse(localStorage.getItem('userDetails'))
 }
 const signupDetails = {
   toast:'',
@@ -45,19 +45,19 @@ const categoriesData = {
 export const LoginReducer1 = (state = loginDetails, action) => {
   switch (action.type){
     case LOGIN: {
-      console.log('LoginReducer1', action.payload)
+      console.log(action.payload,'LoginReducer1')
       let getToken = action.payload.accessToken
       localStorage.setItem('accessToken', JSON.stringify(getToken))
-      localStorage.setItem('useDetails', JSON.stringify(action.payload))
+      localStorage.setItem('userDetails', JSON.stringify(action.payload))
       return {
         ...state,
         accessToken: action.payload.accessToken,
         isLogin: localStorage.getItem('accessToken') ? true : false,
         toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT}),
+        userProfile:action.payload.user
       }
     }
     case LOGIN_ERROR:{
-      console.log('LoginReducer12')
       return{
         ...state,
         error:action.payload,
@@ -65,6 +65,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
       }
     }
     case LOGOUT : {
+      console.log(action.payload,'LoginReducerLogout')
       return{
         ...state,
         accessToken:localStorage.clear(),
@@ -209,24 +210,6 @@ export const AddItemToCartReducer = (state = productQty, action) => {
         product:action.payload,
         qty:1
       }
-      // case ITEM_INCREASE:
-      //   console.log(action.payload, 'allProduct112')
-      //   const result1  = action.payload.qty >= 11 ? 11 : action.payload.qty += 1
-      //   return{
-      //     ...state,
-      //     qty:result1,
-      //     error:result1 >= 11 ? 'Quantity can not be more than 10' : ''
-      //   }
-      // case ITEM_DECREASE:{
-      //   console.log(action.payload, 'allProduct2')
-      //   const result1  = action.payload.qty <= 0 ? 0 : action.payload.qty -= 1
-      //   action.result
-      //   return{
-      //     ...state,
-      //     qty:result1,
-      //     error:result1 <= 0 ? 'Quantity can not be less than 1' : ''
-      //   }
-      // }
       case CHANGE_QTY:
       return{
         ...state,
@@ -260,36 +243,3 @@ export const getAllCategoriesReducer = (state=categoriesData, action) => {
     }
   }
 }
-
-// export const ListReducer = (state = toggleData, action) => {
-//   switch (action.type) {
-//     case TOGGLELIST:
-//       console.log(localStorage.getItem('removeList'), 'test:::::::');
-//       return {
-//         ...state,
-//         toggleData: !localStorage.getItem('removeList')
-//           ? action.payload
-//           : JSON.parse(localStorage.getItem('removeList')),
-//       };
-//     case REMOVELIST:
-//       let remaningItems = state.toggleData.filter((key) => {
-//         return !action.payload.id.includes(key.id);
-//       });
-//       localStorage.setItem('removeList', JSON.stringify(remaningItems));
-//       if (!localStorage.getItem('removeList')) {
-//         return {
-//           ...state,
-//           toggleData: JSON.parse(localStorage.getItem('removeList')),
-//         };
-//       }
-//       return {
-//         ...state,
-//         toggleData: remaningItems,
-//       };
-
-//     default:
-//       return {
-//         ...state,
-//       };
-//   }
-// };

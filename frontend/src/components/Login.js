@@ -5,7 +5,6 @@ import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
-// import { auth } from '../firebase';
 import {app, useFirebase} from '../Firebase'
 import { loginService } from '../services/Services';
 const auth = getAuth(app);
@@ -18,7 +17,7 @@ const Login = (props) => {
     const isLogin = useSelector((state) => state.LoginStore.isLogin)
     const isLogin1 = useSelector((state) => state.LoginStore)
     const Logintoast = useSelector((state) => state.LoginStore.toast)
-    console.log(isLogin1, 'isLogin1')
+    console.log(isLogin1, 'LoginComponent')
     const loginHandler  = (data) => dispatch(LoginAction(data)) 
     const login = (data) => dispatch(LoginAction1(data))
     const loginError = (data) => dispatch(LoginError(data))
@@ -63,17 +62,16 @@ const Login = (props) => {
             })
         }
         else{
-            firebase.loginInWithEmailAndPassword(inputValue.email, inputValue.password).then((res) => {
-                setDisableButton(false)
-                loginHandler(res.user)
-                console.log(res, 'error11111111111')
+            loginService(inputValue).then(res => {
+                console.log(res.data, 'response111111111')
+                loginHandler(res.data)
                 navigate('/')
-                
-            }).catch((error) => {
+            })
+            .catch((error) => {
+                console.log(error, 'response111111111')
+                setInputValue({...inputValue, backendError:error.response.data})
+                loginError(error.response.data)
                 setDisableButton(false)
-                const formatingMessage = error.code.replace('auth/', '').replaceAll('-',  ' ')
-                console.log('error11111111111', formatingMessage)
-                setInputValue({...inputValue, backendError: formatingMessage})
             })
         }
     }
@@ -84,8 +82,8 @@ const Login = (props) => {
         }
     }, []);
     return (
-        <div className='login-wrapper bg-white'>
-            <div className='w-100'>
+        <div className='login-wrapper'>
+            <div className='w-100 bg-white'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -97,7 +95,7 @@ const Login = (props) => {
                     <Form.Control type="password" value={inputValue.password} onChange={onChangeHandler} name='password' placeholder="Password" />
                     {inputValue.passwordError ? <p className='text-danger'>{inputValue.passwordError}</p> :''}
                 </Form.Group>
-                {inputValue.backendError ? <p className='small text-danger'>{inputValue.backendError}</p> : ''}
+                {inputValue.backendError ? <p className='text-danger'>{inputValue.backendError}</p> : ''}
                 <Button disabled={disableButton} variant="primary" type="submit" onClick={submitLoginForm}>
                     Submit
                 </Button>
