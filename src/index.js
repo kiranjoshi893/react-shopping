@@ -5,7 +5,7 @@ import {Store} from "./store/Store";
 import App from './App';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import { FirebaseProvide } from './Firebase';
+// import { FirebaseProvide } from './Firebase';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
@@ -14,9 +14,9 @@ root.render(
   // <BrowserRouter></BrowserRouter>
   <HashRouter>
     <Provider store={Store}>
-      <FirebaseProvide>
+      {/* <FirebaseProvide> */}
       <App />
-      </FirebaseProvide>
+      {/* </FirebaseProvide> */}
     </Provider>
     </HashRouter>
   // </React.StrictMode>
