@@ -62,7 +62,6 @@ import ProductList from './ProductList';
                     </div>
                 </div>
             </div>
-            {/* {getProductList?.AllProductStore?.productList?.map((data) => {return (<div>sadasdasd</div>)})} */}
         </div>
     </div>
  }
