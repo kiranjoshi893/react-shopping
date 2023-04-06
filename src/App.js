@@ -14,6 +14,7 @@ import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
 import Footer from './common/Footer';
 import { ToastContainer } from 'react-bootstrap';
+import Checkout from './components/Checkout';
 // import { getAuth } from 'firebase/auth';
 // import {app} from './firebase'
 // import { Navigate } from 'react-router-dom';
@@ -40,8 +41,9 @@ export default function App(props) {
             return <Route key={data.name} exact path={data.path} element={data.Component}/>
           })}
           <Route path="/products/:id" element={<ProductDetails />}/>
+          <Route path="/cart" element={<Cart />}/>
           <Route exact path='/' element={<PrivateRoute/>}>
-            <Route path="/cart" element={<Cart />}/>
+            <Route path="/checkbout" element={<Checkout />}/>
           </Route>
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" exact element={<Signup />} />
