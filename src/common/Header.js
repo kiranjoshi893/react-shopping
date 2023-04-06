@@ -13,7 +13,7 @@ function Header() {
   const {items} = getDataFromStore
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  // console.log(getState.userProfile.name,  'LoginHeader')
+  console.log(getDataFromStore,  'LoginHeader213123123')
   const removeItemsToCart = (data) => dispatch(ItemRemoveToCart(data))
   const logout = (data) => dispatch(LogoutAction(data))
   const [show, setShow] = useState(true)

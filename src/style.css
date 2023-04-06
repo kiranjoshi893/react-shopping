@@ -404,6 +404,7 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .toast.bg-danger{background-color: var(--danger) !important;}
 .toast svg{width: 28px;height: 28px;}
 .toast svg path{fill: var(--white)!important;}
+.empty-cart-wrapper img {max-width: 150px;}
 @media (min-width: 1400px){
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
       max-width: 1380px;
