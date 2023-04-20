@@ -8,11 +8,11 @@ const ItemListOnCartPage = (props) => {
     return(
         <div key={data.title} className='row cart-list d-flex justify-content-between'>
                 <div className='col-md-3'>
-                    <img src={data.images} />
+                    <img src={data.images[0]} />
                 </div>
                 <div className='col-md-4'>
-                    <h5 className='text-secondary'>{data.title}</h5>
-                    <h5 className='text-main mt-3 fw-bold'>₹ {data.price * data.qty}</h5>
+                    <h5 className='text-secondary'>{data.name}</h5>
+                    <h5 className='text-main mt-3 fw-bold'>₹ {data.original_price * data.qty}</h5>
                 </div>
                 <div className='col-md-3'>
                     <div className='cart-qty d-flex float-end'>

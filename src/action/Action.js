@@ -1,4 +1,4 @@
-import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, LOGIN_ERROR, LOGOUT, SIGNUP, SIGNUP_ERROR} from '../constant/ActionType';
+import {LOGIN, ALL_PRODUCTS, ALL_PRODUCTS_ERROR, ALL_PRODUCTS_WAIT, ADD_ITEMS_TO_CART, INCREASE_QTY, DECREASE_QTY, ADD_TO_CART, CART_ITEM, CHANGE_QTY, ITEM_ADD_TO_CART, ITEM_REMOVE_TO_CART, ITEM_INCREASE, ITEM_DECREASE, ITEM_REMOVE_ALL, ALL_CATEGORIES, ALL_CATEGORIES_ERROR, ALL_CATEGORIES_WAIT, LOGIN_ERROR, LOGOUT, SIGNUP, SIGNUP_ERROR, SINGLE_PRODUCT, SINGLE_PRODUCT_LOADING, SINGLE_PRODUCT_ERROR, FILTER_BY_CATEGORY} from '../constant/ActionType';
 
 import { toast } from "react-toastify";
 
@@ -76,6 +76,27 @@ export const AllCategoriesWait = (params) => {
     payload:params
   }
 }
+export const SingleProductAction = (params) => {
+  console.log(params, 'paramsparams')
+  return{
+    type:SINGLE_PRODUCT,
+    payload:params
+  }
+}
+export const SingleProductLoadingAction = (params) => {
+  console.log(params, 'paramsparams')
+  return{
+    type:SINGLE_PRODUCT_LOADING,
+    payload:params
+  }
+}
+export const SingleProductErrorAction = (params) => {
+  console.log(params, 'paramsparams')
+  return{
+    type:SINGLE_PRODUCT_ERROR,
+    payload:params
+  }
+}
 export const CategoriesFilter = (params) => {
   return{
     type:ALL_CATEGORIES,
@@ -126,6 +147,13 @@ export const RemoveAllItems = (params) => {
 export const LogoutAction = (params) => {
   return{
     type:LOGOUT,
+    payload:params
+  }
+}
+export const FilterAction = (params) => {
+  // console.log(params, 'filterActionfilterAction')
+  return{
+    type:FILTER_BY_CATEGORY,
     payload:params
   }
 }

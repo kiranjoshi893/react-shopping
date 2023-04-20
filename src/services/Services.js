@@ -1,5 +1,6 @@
 import axios, { Axios } from "axios";
 import api from '../config/api'
+import { SingleProductAction } from "../action/Action";
 
 const headersApplicationJson = {
   "Content-Type": "application/json",
@@ -19,7 +20,13 @@ export const signupService = (params) => {
 }
 export const getAllProductServices = (params) => {
   console.log(params, 'dsfgh::::')
-  return axios.get(api.ALLPRODUCTS, params, {
+  // return axios.get(api.ALLPRODUCTS + (params === undefined ? '' : `/?name=${params}`), {
+  return axios.get(api.ALLPRODUCTS + (params === undefined ? '' : `?${params}`), {
+    headers:headersApplicationJson
+  })
+}
+export const getSingleProductServices = (params)=> {
+  return axios.get(api.ALLPRODUCTS + `/?name=${params}`, {
     headers:headersApplicationJson
   })
 }

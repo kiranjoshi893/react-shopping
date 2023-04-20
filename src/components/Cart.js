@@ -6,6 +6,7 @@ import { BreadcrumbList } from '../common/BreadcrumbList';
 import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
 import EmptyCart from '../common/EmptyCart';
 import ItemListOnCartPage from '../common/ItemListOnCartPage';
+import { Pagination } from 'react-bootstrap';
  const Cart = () => {
     const navigate = useLocation()
     const getData = useSelector(data => data.ItemAddTOCart.items)
@@ -25,7 +26,7 @@ import ItemListOnCartPage from '../common/ItemListOnCartPage';
                         <h3 className='fw-bold'>Cart</h3>
                         <div className='cart-wrapper'>
                             {getData.map((item) => 
-                                <ItemListOnCartPage data={item} itemDecrease={() => itemDecrease(item)}  itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} />
+                                <ItemListOnCartPage key={item.id} data={item} itemDecrease={() => itemDecrease(item)}  itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} />
                             )}
                         </div>
                     </div>
