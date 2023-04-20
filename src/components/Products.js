@@ -39,14 +39,6 @@ import { PaginatedItems } from '../common/Pagination';
         setShowToast(true)
         itemsAddToCart(data)
     }
-    useEffect(() => {
-        getAllCategories('/')
-        getAllProduct()
-        // getProductByfilter(`${passParamsNew === undefined ? '' : passParamsNew}&${passParams === undefined ? '' : passParams}`)
-        // setPassParams(state?.name === undefined ? '' : `category=${state?.name}&`)
-        // setPassParamsNew1([passParamsNew, passParams])
-        // setClearFilter(state?.name === undefined ? '' : state?.name)
-    },[])
     const [message, setMessage] = useState("Hello World");
     const applyFilter = (message) => {
         setMessage(message);
@@ -95,8 +87,11 @@ import { PaginatedItems } from '../common/Pagination';
         }
     }
     useEffect(() => {
+        getAllCategories('/')
+        // getAllProduct()
+    },[])
+    useEffect(() => {
         setSearchParams({category:theCategory, color:theColor, gender:theGender, rating:theRating });
-        console.log(searchParams, 'searchParamssearchParamssearchParams11312')
         getAllProduct(searchParams)
     },[theCategory, theColor, theGender, theRating, searchParams])
     return <div>

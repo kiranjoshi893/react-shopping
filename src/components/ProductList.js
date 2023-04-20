@@ -14,10 +14,10 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
     const itemsAddToCart = (data) => dispatch(ItemAddToCart(data))
     const goToDetailPage = (data) => {
         // const filtertedURL = data.title.split(' ').join('-')
-        const filtertedURL = data.name
-        console.log(filtertedURL, 'filtertedURL');
-        navigate(`/products/${filtertedURL}`, {state:data})
-        console.log(navigate, 'navigate111');
+        // const filtertedURL = data.name.replaceAll(' ',  '-')
+        // console.log(filtertedURL, 'filtertedURL');
+        navigate(`/products/${data.name}`, {state:data})
+        console.log(data.name, 'navigate111rerer');
     }
     return (
         <div className="product-wrap border h-100 mb-25" key={getData.id}>
