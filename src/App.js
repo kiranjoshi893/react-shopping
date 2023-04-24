@@ -26,7 +26,7 @@ export default function App(props) {
   const [hideToast, setHideToast] = useState(cartItemList)
   console.log(getState,  'getState')
   const location = useLocation()
-  console.log(location,'navigate111111')
+  // console.log(location,'navigate111111')
   const PrivateRoute = () => {
     return getState ? <Outlet /> : <Navigate to="/login" />;
   }

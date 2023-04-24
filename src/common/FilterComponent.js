@@ -26,8 +26,12 @@ const FilterComponent = ({applyFilter, category, searchParams}) => {
                                                 <li key={`${index}_${val}`} className="mb-1">
                                                 <label className='cursor-pointer'>
                                                     <input value={val} type="checkbox" onChange={
-                                                        (e) => applyFilter(e.target.value, data, searchParams)}/>
+                                                        (e) => applyFilter(
+                                                            e.target.value === 'Men' || e.target.value === 'Women' || e.target.value === 'men' || e.target.value === 'women' ? e.target.value.toUpperCase() : e.target.value,
+                                                         data, 
+                                                         searchParams)} />
                                                     <span>{val}</span> 
+                                                    {/* checked={message === val} */}
                                                 </label>
                                             </li>
                                             )

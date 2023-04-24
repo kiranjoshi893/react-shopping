@@ -31,47 +31,42 @@ import { PaginatedItems } from '../common/Pagination';
         setClearFilter(data)
         console.log(data, clearFilter, 'clearFilter111')
     }
-    const clearAllFilter = () => {
-        setClearFilter('')
-        navigate(location.pathname, { replace: true });
-    }
     const itemsToCart = (data) =>{
         setShowToast(true)
         itemsAddToCart(data)
     }
-    const [message, setMessage] = useState("Hello World");
-    const applyFilter = (message) => {
-        setMessage(message);
-      };
+    const [message, setMessage] = useState("");
+    // const applyFilter = (message) => {
+    //     setMessage(message);
+    //     console.log(message, 'messageadadADd')
+    //   };
         const [searchParams, setSearchParams] = useSearchParams();
+        console.log(searchParams, 'searchParamssearchParamssearchParamssearchParams')
         const [theCategory, setTheCategory] = useState([]);
         const [theColor, setColor] = useState([]);
         const [theGender, setGender] = useState([]);
-        const [theRating, setRating] = useState([]);
+        const [theRating, setRating] = useState('');
         const [category, setCategory] = useState([
             {heading:'Category', data:['shoes', 'clothes']},
             {heading:'Color', data:['Black', 'Red', 'White', 'Blue']},
-            {heading:'Gender', data:['Male', 'Female']},
-            {heading:'Rating', data:['Ascending', 'Descending']},
+            {heading:'Gender', data:['Men', 'Women']},
         ])
       const getResult = (e, data) => {
-        console.log(data.heading, 'heading')
+        console.log(e,  data.heading, 'headingsasSa')
+        setMessage(e);
         const newArray1 = [...theCategory]
         const newArray2 = [...theColor]
         const newArray3 = [...theGender]
-        const newArray4 = [...theRating]
         const ifExit = newArray1.includes(e)
-        if(newArray1.includes(e) || newArray2.includes(e) || newArray3.includes(e) || newArray4.includes(e)){
+        if(newArray1.includes(e) || newArray2.includes(e) || newArray3.includes(e)){
             newArray1.splice(newArray1.indexOf(e), 1)
             newArray2.splice(newArray2.indexOf(e), 1)
             newArray3.splice(newArray3.indexOf(e), 1)
-            newArray4.splice(newArray4.indexOf(e), 1)
         }
         else{
             newArray1.push(e)
             newArray2.push(e)
             newArray3.push(e)
-            newArray4.push(e)
         }
         if(data.heading === 'Category'){
             setTheCategory(newArray1)
@@ -82,18 +77,12 @@ import { PaginatedItems } from '../common/Pagination';
         else if(data.heading === 'Gender'){
             setGender(newArray3)
         }
-        else if(data.heading === 'Rating'){
-            setRating(newArray4)
-        }
     }
+    console.log(location,'navigate111111')
     useEffect(() => {
-        getAllCategories('/')
-        // getAllProduct()
-    },[])
-    useEffect(() => {
-        setSearchParams({category:theCategory, color:theColor, gender:theGender, rating:theRating });
+        setSearchParams({category:theCategory, color:theColor, gender:theGender });
         getAllProduct(searchParams)
-    },[theCategory, theColor, theGender, theRating, searchParams])
+    },[theCategory, theColor, theGender, searchParams])
     return <div>
         {/* {passParamsNew1.map((items) => {
             return items
@@ -113,7 +102,7 @@ import { PaginatedItems } from '../common/Pagination';
             {/* {passParams} */}
             <div className='row'>
                 <div className='col-md-2'>
-                    <FilterComponent category={getDataFromStore.list} categoryState={state} clearAllFilter={() => clearAllFilter()} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams}/>
+                    <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams} />
                 </div>
                 <div className='col-md-10'>
                     <div className='row'>
