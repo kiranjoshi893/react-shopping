@@ -243,7 +243,7 @@ ul.slick-dots.slick-thumb li.slick-active img{
   border-bottom: 1px solid #eee;
 }
 .cart-wrapper .cart-list{
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 0rem;
 }
 .cart-qty {
   max-width: 150px;
