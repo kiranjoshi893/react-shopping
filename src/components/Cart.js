@@ -6,6 +6,8 @@ import { BreadcrumbList } from '../common/BreadcrumbList';
 import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
 import EmptyCart from '../common/EmptyCart';
 import ItemListOnCartPage from '../common/ItemListOnCartPage';
+import { Pagination } from 'react-bootstrap';
+import TotalPayment from '../common/TotalPayment';
  const Cart = () => {
     const navigate = useLocation()
     const getData = useSelector(data => data.ItemAddTOCart.items)
@@ -25,11 +27,13 @@ import ItemListOnCartPage from '../common/ItemListOnCartPage';
                         <h3 className='fw-bold'>Cart</h3>
                         <div className='cart-wrapper'>
                             {getData.map((item) => 
-                                <ItemListOnCartPage data={item} itemDecrease={() => itemDecrease(item)}  itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} />
+                                <ItemListOnCartPage key={item.id} data={item} itemDecrease={() => itemDecrease(item)}  itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} />
                             )}
                         </div>
                     </div>
-                    <div className='col-md-4'></div>
+                    <div className='col-md-4 ps-4'>
+                        <TotalPayment data={getData}/>
+                    </div>
                 </div>
                 }
             </div>

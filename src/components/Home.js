@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation} from 'react-router'
 import { AllProductList } from '../action/Action'
-import { BreadcrumbList } from '../common/BreadcrumbList'
+import { BreadcrumbList, Loader } from '../common/BreadcrumbList'
 import Footer from '../common/Footer'
 import HomeBanner from '../common/HomeBanner'
 import HomeThreeCard from '../common/HomeThreeCard'
@@ -13,7 +13,7 @@ const Home = (props) => {
   const location = useLocation()
   const getProductList = useSelector((state) => state)
   const filterItems = getProductList
-  console.log(getProductList, 'history1111')
+  console.log(getProductList, 'getProductListgetProductList')
   useEffect(() => {
     getAllCategories()
     getAllProduct()
@@ -23,12 +23,19 @@ const Home = (props) => {
     <>
       <HomeBanner/>
       <div className='container'>
+      {getProductList.AllProductStore.productListWait ? <Loader/>
+           : <>
         <div className='row mt-4'>
-        {getProductList.getAllCategories.list?.slice(0, 3)?.map((data) => {
-            return (
-              <div className="col-md-4" key={data.id}><HomeThreeCard data={data}/></div>
+          {getProductList.AllProductStore.womenProducts.slice(0, 1).map((data) => {
+            return(
+              <div className="col-md-6" key={data.id}><HomeThreeCard data={data}/></div>
             )
-        })}
+          })}
+          {getProductList.AllProductStore.menProducts.slice(0, 1).map((data) => {
+            return(
+              <div className="col-md-6" key={data.id}><HomeThreeCard data={data}/></div>
+            )
+          })}
         </div>
         <div className='latest-products mt-5 pt-5'>
           <h6 className='text-center text-main mb-2 fw-lighter'><i>New Collection</i></h6>
@@ -41,6 +48,7 @@ const Home = (props) => {
             })}
             </div>
         </div>
+        </> }
       </div>
     </>
     </>

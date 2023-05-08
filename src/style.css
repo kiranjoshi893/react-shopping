@@ -10,6 +10,7 @@
   --info:#0087d7;
   --secondary:#ccc;
   --warning:#ffbc00;
+  --black:#000;
 }
 body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gray);}
 .yellow{color: var(  --yellow);}
@@ -66,7 +67,8 @@ body{font-family: 'Manrope', sans-serif;font-weight: 500;color: var(--common-gra
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 125px);
+  /* height: calc(100vh - 125px); */
+  padding:3rem 0rem;
   background-color:var(--white)
 }
 .login-wrapper >  div{
@@ -242,7 +244,7 @@ ul.slick-dots.slick-thumb li.slick-active img{
   border-bottom: 1px solid #eee;
 }
 .cart-wrapper .cart-list{
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 0rem;
 }
 .cart-qty {
   max-width: 150px;
@@ -306,13 +308,18 @@ ul.slick-dots.slick-thumb li.slick-active img{
   left: 0%;
   width: 100%;
   height: 100%;
-  background: rgb(0 0 0 / 28%);
-  padding-left: 10%;
-  padding-top: 17%;
+  background: rgb(0 0 0 / 25%);
+  /* padding-left: 10%; */
+  /* padding-top: 17%; */
   color: var(--white);
-  text-shadow: 0px 3px 4px rgb(0 0 0 / 40%);
+  /* text-shadow: 0px 3px 4px rgb(0 0 0 / 30%); */
 }
-.home-card-caption button {
+.home-card img {
+  height: 300px;
+  object-fit: contain;
+  background: #eceff1;
+}
+/* .home-card-caption button {
   background: var(--white);
   border-radius: 4px;
   padding: 0.4rem 1rem;
@@ -324,7 +331,7 @@ ul.slick-dots.slick-thumb li.slick-active img{
   background: var(--white);
   opacity: 0.8;
   color: #333;
-}
+} */
 .heading span{
   display: inline-block;
   position: relative;
@@ -405,6 +412,30 @@ ul.slick-dots.slick-thumb li.slick-active img{
 .toast svg{width: 28px;height: 28px;}
 .toast svg path{fill: var(--white)!important;}
 .empty-cart-wrapper img {max-width: 150px;}
+.accordion-button {
+  padding: 0.5rem 1rem;
+  background: var(--white) !important;
+  font-weight: 700;
+  color: var(--bs-black) !important;
+}
+.accordion-item {
+  border-radius: 0 !important;
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+.accordion-button::after {
+  background-size: 12px;
+  position: relative;
+  top: -4px;
+}
+.accordion-item .accordion-button {
+  border: none !important;
+  padding-bottom: 1rem;
+  box-shadow: none !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @media (min-width: 1400px){
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
       max-width: 1380px;
