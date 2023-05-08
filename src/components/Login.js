@@ -1,8 +1,11 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { Component, useState, useEffect } from 'react';
 import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginAction, LoginAction1, LoginError } from '../action/Action';
+import { auth } from '../firebase';
+import { login } from '../services/Auth';
 import { loginService } from '../services/Services';
 
 const Login = (props) => {
@@ -56,16 +59,17 @@ const Login = (props) => {
             })
         }
         else{
-            loginService(inputValue).then(res => {
-                console.log(res.data, 'response111111111')
-                loginHandler(res.data)
-                navigate('/')
-            })
-            .catch((error) => {
-                console.log(error, 'response111111111')
-                setInputValue({...inputValue, backendError:error.response.data})
-                loginError(error.response.data)
+            // authorization with firework
+            signInWithEmailAndPassword(auth, inputValue.email, inputValue.password).then((res) => {
                 setDisableButton(false)
+                loginHandler(res.user)
+                // console.log(res.user)
+                navigate('/')
+                
+            }).catch((error) => {
+                setDisableButton(false)
+                console.log('error', error)
+                setInputValue({...inputValue, backendError: error.code})
             })
         }
     }

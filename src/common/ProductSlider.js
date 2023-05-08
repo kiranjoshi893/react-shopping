@@ -11,7 +11,7 @@ const ProductSlider = (props) => {
     customPaging: function(i) {
       return (
         <a>
-          <img src={`${images[i]}`} />
+          <img src={`${images[i]}`} className='w-100'/>
         </a>
       );
     },
@@ -26,7 +26,7 @@ const ProductSlider = (props) => {
         <div>
             <Slider {...settings}>
           {images?.map((data, index) => {
-            return <div key={index}><img src={data} /></div>
+            return <div key={index}><img src={data} className='w-100'/></div>
             
           })}
         </Slider>
