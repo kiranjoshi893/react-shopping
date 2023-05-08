@@ -52,7 +52,7 @@ const categoriesData = {
   list: []
 }
 
-export const LoginReducer1 = (state = loginDetails, action) => {
+export const LoginReducer = (state = loginDetails, action) => {
   switch (action.type){
     case LOGIN: {
       console.log(action.payload,'LoginReducer1')
@@ -63,7 +63,7 @@ export const LoginReducer1 = (state = loginDetails, action) => {
         ...state,
         accessToken: action.payload.accessToken,
         isLogin: localStorage.getItem('accessToken') ? true : false,
-        toast:toast.success('login Successfull!',{position: toast.POSITION.TOP_RIGHT}),
+        toast:toast.success('Login Successfull!',{position: toast.POSITION.TOP_RIGHT}),
         userProfile:action.payload.user
       }
     }
@@ -81,6 +81,21 @@ export const LoginReducer1 = (state = loginDetails, action) => {
         accessToken:localStorage.clear(),
         isLogin:false,
         toast:toast.error('Logout Successfull!',{position: toast.POSITION.TOP_RIGHT})
+      }
+    }
+    default : 
+      return {
+        ...state
+      }
+  }
+}
+
+export const SignupReducer = (state = [], action) => {
+  switch (action.type){
+    case SIGNUP: {
+      return {
+        ...state,
+        toast:toast.success('Signup Successfull!',{position: toast.POSITION.TOP_RIGHT}),
       }
     }
     default : 
