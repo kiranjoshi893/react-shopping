@@ -40,7 +40,7 @@ import { getAllProduct, getSingleProduct } from '../services/Auth';
                     <div className='col-md-7 ps-5'>
                         <div className='prodct-detail'>
                             <h2 className="fw-bold">{list.name}</h2>
-                            <h4 className="tt-price">Rs. {list.final_price}</h4>
+                            <h4 className="tt-price">Rs. {list.original_price}</h4>
                             <p className="text-secondary mb-2">Category: {list.category}</p>
                             <p className="text-secondary">Color:   {list.color}</p>
                             <div className="product-rating mb-4">
