@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { ItemAddToCart } from '../action/Action';
-import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
+import { ItemAddToCart } from '../../action/Action';
+import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../../common/Svg';
 
 
  const ProductList = (props) => {

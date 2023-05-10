@@ -3,10 +3,10 @@ import React, { Component, useState, useEffect } from 'react';
 import { Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { LoginAction, LoginAction1, LoginError } from '../action/Action';
-import { auth } from '../firebase';
-import { login } from '../services/Auth';
-import { loginService } from '../services/Services';
+import { LoginAction, LoginAction1, LoginError } from '../../action/Action';
+import { auth } from '../../firebase';
+import { login } from '../../services/Auth';
+import { loginService } from '../../services/Services';
 
 const Login = (props) => {
     const navigate = useNavigate()

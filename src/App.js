@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import Login from './components/Login';
+import Login from './components/auth/Login';
 import Header from './common/Header';
-import Signup from './components/SignUp';
+import Signup from './components/auth/SignUp';
 import './style.css';
 import { BrowserRouter, Redirect, Route, Routes, useHistory, Navigate, HashRouter } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import ProtectedRoute from './common/ProtectedRoute';
 import { useSelector } from 'react-redux';
-import Products from './components/Products';
+import Products from './components/product/Products';
 import NavigationRoutes from './common/NavigationRoutes';
-import ProductDetails from './components/ProductDetails';
-import Cart from './components/Cart';
+import ProductDetails from './components/product/ProductDetails';
+import Cart from './components/cart/Cart';
 import Footer from './common/Footer';
 import { ToastContainer } from 'react-bootstrap';
-import Checkout from './components/Checkout';
+import Checkout from './components/cart/Checkout';
 // import { getAuth } from 'firebase/auth';
 // import {app} from './firebase'
 // import { Navigate } from 'react-router-dom';

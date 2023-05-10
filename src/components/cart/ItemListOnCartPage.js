@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
+import { CloseIcon, MinusIcon, PlusIcon } from '../../common/Svg';
 
 const ItemListOnCartPage = (props) => {
     const {data} = props

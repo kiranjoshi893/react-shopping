@@ -1,12 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from "react-router-dom";
-import {AllItems, ItemAddToCart, ItemDecrease, ItemIncrease } from '../action/Action';
-import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
-import ItemQtyIncreaseDecrease from '../common/ItemQtyIncreaseDecrease';
-import ProductSlider from '../common/ProductSlider';
-import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../common/Svg';
-import { getAllProduct, getSingleProduct } from '../services/Auth';
+import {AllItems, ItemAddToCart, ItemDecrease, ItemIncrease } from '../../action/Action';
+import { BreadcrumbList, Loader } from '../../common/BreadcrumbList';
+import ItemQtyIncreaseDecrease from '../../common/ItemQtyIncreaseDecrease';
+import ProductSlider from './ProductSlider';
+import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../../common/Svg';
+import { getAllProduct, getSingleProduct } from '../../services/Auth';
 // import { getAllProduct } from '../services/Auth';
  const ProductDetails = (props) => {
     const storeState = useSelector((state) => state.AddToCart)

@@ -1,13 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { AllCategories, AllProductList, ItemAddToCart } from '../action/Action';
-import { BreadcrumbList, Loader } from '../common/BreadcrumbList';
-import FilterComponent from '../common/FilterComponent';
-import { getAllCategories, getAllProduct, getProductByfilter } from '../services/Auth';
-import ProductList from './ProductList';
+import { AllCategories, AllProductList, ItemAddToCart } from '../../action/Action';
+import { BreadcrumbList, Loader } from '../../common/BreadcrumbList';
+import FilterComponent from '../../common/FilterComponent';
+import { getAllCategories, getAllProduct, getProductByfilter } from '../../services/Auth';
+import ProductList from '././ProductList';
 import ReactPaginate from 'react-paginate';
-import { PaginatedItems } from '../common/Pagination';
+import { PaginatedItems } from '../../common/Pagination';
 
 
  const Products = (props) => {

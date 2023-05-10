@@ -4,9 +4,9 @@ import { Button, Form, ToastContainer } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {SignUpAction,  SignupError } from '../action/Action';
-import { auth } from '../firebase';
-import { signupService } from '../services/Services';
+import {SignUpAction,  SignupError } from '../../action/Action';
+import { auth } from '../../firebase';
+import { signupService } from '../../services/Services';
 
 const SignUp = (props) => {
     const isLogin = useSelector((state) => state.LoginStore.isLogin)

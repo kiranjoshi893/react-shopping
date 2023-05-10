@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { ItemDecrease, ItemIncrease, ItemRemoveToCart } from '../action/Action';
-import { BreadcrumbList } from '../common/BreadcrumbList';
-import { CloseIcon, MinusIcon, PlusIcon } from '../common/Svg';
-import EmptyCart from '../common/EmptyCart';
-import ItemListOnCartPage from '../common/ItemListOnCartPage';
+import { ItemDecrease, ItemIncrease, ItemRemoveToCart } from '../../action/Action';
+import { BreadcrumbList } from '../../common/BreadcrumbList';
+import { CloseIcon, MinusIcon, PlusIcon } from '../../common/Svg';
+import EmptyCart from '../../common/EmptyCart';
+import ItemListOnCartPage from './ItemListOnCartPage';
 import { Pagination } from 'react-bootstrap';
-import TotalPayment from '../common/TotalPayment';
+import Checkout from './Checkout';
  const Cart = () => {
     const navigate = useLocation()
     const getData = useSelector(data => data.ItemAddTOCart.items)
@@ -32,7 +32,7 @@ import TotalPayment from '../common/TotalPayment';
                         </div>
                     </div>
                     <div className='col-md-4 ps-4'>
-                        <TotalPayment data={getData}/>
+                        <Checkout data={getData}/>
                     </div>
                 </div>
                 }

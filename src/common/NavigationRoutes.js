@@ -1,5 +1,5 @@
-import Home from "../components/Home";
-import Products from "../components/Products";
+import Home from "../components/home/Home";
+import Products from "../components/product/Products";
 
 export default [
     {path : '/', name: "Home", Component: <Home />},

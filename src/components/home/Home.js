@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation} from 'react-router'
-import { AllProductList } from '../action/Action'
-import { BreadcrumbList, Loader } from '../common/BreadcrumbList'
-import Footer from '../common/Footer'
-import HomeBanner from '../common/HomeBanner'
-import HomeThreeCard from '../common/HomeThreeCard'
-import { getAllCategories, getAllProduct} from '../services/Auth'
-import ProductList from './ProductList'
+import { AllProductList } from '../../action/Action'
+import { BreadcrumbList, Loader } from '../../common/BreadcrumbList'
+import Footer from '../../common/Footer'
+import HomeBanner from './HomeBanner'
+import HomeThreeCard from './HomeThreeCard'
+import { getAllCategories, getAllProduct} from '../../services/Auth'
+import ProductList from '../product/ProductList'
 
 const Home = (props) => {
   const location = useLocation()

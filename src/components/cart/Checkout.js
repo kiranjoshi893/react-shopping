@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TotalPayment = ({data}) => {
+const Checkout = ({data}) => {
     console.log(data, 'props:121211312')
     const onlyPrice  = data.map(value => parseInt(value.original_price) * value.qty)
     // const convertIntoNumber = onlyPrice.map(Number)
@@ -27,4 +27,4 @@ const TotalPayment = ({data}) => {
         </>
     )
 }
-export default TotalPayment
+export default Checkout
