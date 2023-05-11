@@ -49,6 +49,11 @@ import { getAllProduct, getSingleProduct } from '../../services/Auth';
                                 <StartO className="yellow me-2"/>
                                 <StartO className="yellow me-2"/>
                                 <Start className="me-2" />
+                                {/* use of map */}
+                                {/* react staga */}
+                                {/* style component */}
+                                {/* reactstrap */}
+                                {/* test cases */}
                             </div>
                             <ItemQtyIncreaseDecrease/>
                         </div>

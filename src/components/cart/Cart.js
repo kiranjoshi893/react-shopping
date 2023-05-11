@@ -13,6 +13,15 @@ import Checkout from './Checkout';
     const getData = useSelector(data => data.ItemAddTOCart.items)
     const storeState = useSelector((state) => state.AddToCart)
     const dispatch = useDispatch()
+    // function actionCreator(payload) {
+    //     return dispatch => {
+    //         dispatch(action1(payload))
+    //         dispatch(action2(payload))
+    //     }
+    // }
+    // const cartActionsPerform = (data, fu) => {
+    //     dispatch(fn(data))
+    // }
     const itemIncrement = (data) => dispatch(ItemIncrease(data))
     const itemDecrease = (data) => dispatch(ItemDecrease(data))
     const removeItem = (data) => dispatch(ItemRemoveToCart(data))
@@ -21,13 +30,15 @@ import Checkout from './Checkout';
         <>
         <BreadcrumbList url={navigate}/>
             <div className='container'>
-            {getData.length == 0 ? <EmptyCart/> : 
+            {getData.length && getData.length === 0 ? <EmptyCart/> : 
                 <div className="row">
                     <div className='col-md-8'>
                         <h3 className='fw-bold'>Cart</h3>
                         <div className='cart-wrapper'>
                             {getData.map((item) => 
                                 <ItemListOnCartPage key={item.id} data={item} itemDecrease={() => itemDecrease(item)}  itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} />
+                                // <ItemListOnCartPage key={item.id} data={item} performAction={() => cartActionsPerform(item)} />
+                                // we can write itemIncrement={() => itemIncrement(item)} removeItem={()=> removeItem(item)} these three in single way 
                             )}
                         </div>
                     </div>
