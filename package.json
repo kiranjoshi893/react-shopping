@@ -21,9 +21,11 @@
     "react-router-dom": "^6.8.1",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
+    "reactstrap": "^9.1.9",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.10"
   },
   "scripts": {
     "start": "env-cmd -f .env.dev react-scripts start",
@@ -35,7 +37,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -b github-deployment -d build",
     "server": "json-server --watch ./src/json/db.json -m ./node_modules/json-server-auth --port 5000",
-    "test":"jest"
+    "test": "jest"
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
