@@ -435,7 +435,35 @@ ul.slick-dots.slick-thumb li.slick-active img{
   padding-left: 0;
   padding-right: 0;
 }
-
+.stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+.stars::before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stars-list {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: 25px;
+  font-family: Times;
+  line-height: 1;
+}
+.stars-list::before {
+  content: '★★★★★';
+  letter-spacing: -2px;
+  background: linear-gradient(90deg, #FFD203 var(--percent), var(--black) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* cursor: pointer; */
+}
 @media (min-width: 1400px){
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
       max-width: 1380px;

@@ -32,11 +32,12 @@ import { BagIcon, MinusIcon, PlusIcon, Start, StartO } from '../../common/Svg';
                     <Link to="/">{getData.title}</Link>
                 </h6>
                 <div className="product-rating">
+                    <div class="stars-list" style={{'--rating': getData.rating}} title={`Rating ${getData.rating}`} aria-label={`Rating of this product is ${getData.rating} out of 5.`}></div>
+                    {/* <StartO className="yellow me-2"/>
                     <StartO className="yellow me-2"/>
                     <StartO className="yellow me-2"/>
                     <StartO className="yellow me-2"/>
-                    <StartO className="yellow me-2"/>
-                    <StartO className="yellow me-2" />
+                    <StartO className="yellow me-2" /> */}
                 </div>
                 <div className="product-price mt-3">
                     <h6>₹{getData.original_price} <span className='px-2'>-</span> <del className='text-secondary fw-light'>₹{getData.original_price + 100}</del></h6>

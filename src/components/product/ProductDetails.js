@@ -44,11 +44,12 @@ import { getAllProduct, getSingleProduct } from '../../services/Auth';
                             <p className="text-secondary mb-2">Category: {list.category}</p>
                             <p className="text-secondary">Color:   {list.color}</p>
                             <div className="product-rating mb-4">
+                                <div class="stars-list" style={{'--rating': list.rating}} title={`Rating ${list.rating}`} aria-label={`Rating of this product is ${list.rating} out of 5.`}></div>
+                                {/* <StartO className="yellow me-2"/>
                                 <StartO className="yellow me-2"/>
                                 <StartO className="yellow me-2"/>
                                 <StartO className="yellow me-2"/>
-                                <StartO className="yellow me-2"/>
-                                <Start className="me-2" />
+                                <Start className="me-2" /> */}
                                 {/* use of map */}
                                 {/* react staga */}
                                 {/* style component */}
