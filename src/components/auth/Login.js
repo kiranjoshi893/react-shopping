@@ -7,6 +7,7 @@ import { LoginAction, LoginAction1, LoginError } from '../../action/Action';
 import { auth } from '../../firebase';
 import { login } from '../../services/Auth';
 import { loginService } from '../../services/Services';
+import { Title } from '../../styled-component/StyleComponent';
 
 const Login = (props) => {
     const navigate = useNavigate()
@@ -81,7 +82,8 @@ const Login = (props) => {
     }, []);
     return (
         <div className='login-wrapper'>
-            <div className='w-100 bg-white'>
+            <Title className="row">sasas</Title>
+            <div className='login-in w-100 bg-white'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

@@ -8,7 +8,7 @@ import { getAllCategories, getAllProduct, getProductByfilter } from '../../servi
 import ProductList from '././ProductList';
 import ReactPaginate from 'react-paginate';
 import { PaginatedItems } from '../../common/Pagination';
-
+import styled from 'styled-components';
 
  const Products = (props) => {
     // const notify = () => toast("Wow so easy!");
@@ -99,7 +99,6 @@ import { PaginatedItems } from '../../common/Pagination';
       /> */}
         <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
-            {/* {passParams} */}
             <div className='row'>
                 <div className='col-md-2'>
                     <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams} />
