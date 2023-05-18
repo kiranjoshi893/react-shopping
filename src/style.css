@@ -7,7 +7,7 @@
   --white:#fff;
   --success: #41d888;
   --danger:#f94416;
-  --info:#0087d7;
+  --primary:#0087d7;
   --secondary:#ccc;
   --warning:#ffbc00;
   --black:#000;
@@ -405,7 +405,7 @@ ul.slick-dots.slick-thumb li.slick-active img{
   width: 100%;
 }
 .toast.bg-success{background-color: var(--success) !important;}
-.toast.bg-info{background-color: var(--info) !important;}
+.toast.bg-info{background-color: var(--primary) !important;}
 .toast.bg-secondary{background-color: var(--secondary) !important;}
 .toast.bg-warning{background-color: var(--warning) !important;}
 .toast.bg-danger{background-color: var(--danger) !important;}

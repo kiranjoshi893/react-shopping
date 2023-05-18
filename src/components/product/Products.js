@@ -6,9 +6,7 @@ import { BreadcrumbList, Loader } from '../../common/BreadcrumbList';
 import FilterComponent from '../../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../../services/Auth';
 import ProductList from '././ProductList';
-import ReactPaginate from 'react-paginate';
-import { PaginatedItems } from '../../common/Pagination';
-import styled from 'styled-components';
+import { ButtonCustom, Column, Comp2, CustomDiv } from '../../common/StyleComponent';
 
  const Products = (props) => {
     // const notify = () => toast("Wow so easy!");
@@ -36,10 +34,6 @@ import styled from 'styled-components';
         itemsAddToCart(data)
     }
     const [message, setMessage] = useState("");
-    // const applyFilter = (message) => {
-    //     setMessage(message);
-    //     console.log(message, 'messageadadADd')
-    //   };
         const [searchParams, setSearchParams] = useSearchParams();
         console.log(searchParams, 'searchParamssearchParamssearchParamssearchParams')
         const [theCategory, setTheCategory] = useState([]);
@@ -83,7 +77,7 @@ import styled from 'styled-components';
         setSearchParams({category:theCategory, color:theColor, gender:theGender });
         getAllProduct(searchParams)
     },[theCategory, theColor, theGender, searchParams])
-    return <div>
+    return <CustomDiv>
         {/* {passParamsNew1.map((items) => {
             return items
         })} */}
@@ -97,26 +91,26 @@ import styled from 'styled-components';
         previousLabel="< previous"
         renderOnZeroPageCount={null}
       /> */}
-        <div className='container'>
+        <CustomDiv className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
-            <div className='row'>
-                <div className='col-md-2'>
+            <CustomDiv className='row'>
+                <CustomDiv className='col-md-2'>
                     <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams} />
-                </div>
-                <div className='col-md-10'>
-                    <div className='row'>
+                </CustomDiv>
+                <CustomDiv className='col-md-10'>
+                <CustomDiv className='row'>
                         {getProductList?.productList?.map((data, index) => {
                             return (
-                                <div className="col-md-3 mb-4 pb-3" key={index}>
+                                <CustomDiv className="col-md-3 mb-4 pb-3" key={index}>
                                     <ProductList data={data} itemsToCart={(data) => itemsToCart(data)} showToast={showToast}/>
-                                </div>
+                                </CustomDiv>
                             )
                         })}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </CustomDiv>
+                </CustomDiv>
+            </CustomDiv>
+        </CustomDiv>
+    </CustomDiv>
  }
 
 export default Products

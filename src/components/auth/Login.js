@@ -7,7 +7,7 @@ import { LoginAction, LoginAction1, LoginError } from '../../action/Action';
 import { auth } from '../../firebase';
 import { login } from '../../services/Auth';
 import { loginService } from '../../services/Services';
-import { Title } from '../../styled-component/StyleComponent';
+import { BtnLg, ButtonCustom } from '../../common/StyleComponent';
 
 const Login = (props) => {
     const navigate = useNavigate()
@@ -81,8 +81,13 @@ const Login = (props) => {
         }
     }, []);
     return (
+        <>
         <div className='login-wrapper'>
-            <Title className="row">sasas</Title>
+        {/* <BtnLg primary>sasas</BtnLg>
+        <BtnLg primary as="li">sasas</BtnLg> */}
+        {/* <ButtonCustom className="row">sasas</ButtonCustom> */}
+        </div>
+        <div className='login-wrapper'>
             <div className='login-in w-100 bg-white'>
                 <h3 className='font-weight-bold mb-3 text-primary pb-3'>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -102,6 +107,7 @@ const Login = (props) => {
                 <p className='mt-4 mb-0'>Don't have an account? <Link to='/signup'> Signup here</Link></p>
             </div>
         </div>
+    </>
     )
 }
 export default Login
