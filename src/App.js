@@ -15,9 +15,8 @@ import Cart from './components/cart/Cart';
 import Footer from './common/Footer';
 import { ToastContainer } from 'react-bootstrap';
 import Checkout from './components/cart/Checkout';
-// import { getAuth } from 'firebase/auth';
-// import {app} from './firebase'
-// import { Navigate } from 'react-router-dom';
+
+
 
 export default function App(props) {
   console.log(process.env, "environment");

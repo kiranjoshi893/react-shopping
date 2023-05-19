@@ -5,14 +5,13 @@ import { createSearchParams, useSearchParams} from "react-router-dom";
 import { FilterAction } from '../action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProduct } from '../services/Auth';
-import { CustomDiv } from './StyleComponent';
 
 const FilterComponent = ({applyFilter, category, searchParams}) => {
     // const getFilter = useSelector((state) => state.filterParams)
     const dispatch = useDispatch()
     // const filterAction = (data) => dispatch(FilterAction(data))
     return(
-        <CustomDiv className='product-filter'>
+        <div className='product-filter'>
                 {category?.map((data, index) => {
                     return(
                         <Accordion key={`${index}_${data.heading}`} defaultActiveKey={index}>
@@ -42,7 +41,7 @@ const FilterComponent = ({applyFilter, category, searchParams}) => {
                         </Accordion>
                     )
                 })}
-        </CustomDiv>
+        </div>
     )
 }
 

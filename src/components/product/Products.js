@@ -6,7 +6,7 @@ import { BreadcrumbList, Loader } from '../../common/BreadcrumbList';
 import FilterComponent from '../../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../../services/Auth';
 import ProductList from '././ProductList';
-import { ButtonCustom, Column, Comp2, CustomDiv } from '../../common/StyleComponent';
+import {Row } from '../../common/StyleComponent';
 
  const Products = (props) => {
     // const notify = () => toast("Wow so easy!");
@@ -77,7 +77,7 @@ import { ButtonCustom, Column, Comp2, CustomDiv } from '../../common/StyleCompon
         setSearchParams({category:theCategory, color:theColor, gender:theGender });
         getAllProduct(searchParams)
     },[theCategory, theColor, theGender, searchParams])
-    return <CustomDiv>
+    return <div>
         {/* {passParamsNew1.map((items) => {
             return items
         })} */}
@@ -91,26 +91,26 @@ import { ButtonCustom, Column, Comp2, CustomDiv } from '../../common/StyleCompon
         previousLabel="< previous"
         renderOnZeroPageCount={null}
       /> */}
-        <CustomDiv className='container'>
+        <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
-            <CustomDiv className='row'>
-                <CustomDiv className='col-md-2'>
+            <Row className='row'>
+                <div className='col-md-2'>
                     <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams} />
-                </CustomDiv>
-                <CustomDiv className='col-md-10'>
-                <CustomDiv className='row'>
-                        {getProductList?.productList?.map((data, index) => {
-                            return (
-                                <CustomDiv className="col-md-3 mb-4 pb-3" key={index}>
-                                    <ProductList data={data} itemsToCart={(data) => itemsToCart(data)} showToast={showToast}/>
-                                </CustomDiv>
-                            )
-                        })}
-                    </CustomDiv>
-                </CustomDiv>
-            </CustomDiv>
-        </CustomDiv>
-    </CustomDiv>
+                </div>
+                <div className='col-md-10'>
+                <Row>
+                    {getProductList?.productList?.map((data, index) => {
+                        return (
+                            <div className="col-md-3 mb-4 pb-3" key={index}>
+                                <ProductList data={data} itemsToCart={(data) => itemsToCart(data)} showToast={showToast}/>
+                            </div>
+                        )
+                    })}
+                    </Row>
+                </div>
+            </Row>
+        </div>
+    </div>
  }
 
 export default Products
