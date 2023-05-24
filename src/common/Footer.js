@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Row} from './StyleComponent';
+// import {Row} from './StyleComponent';
 const Footer = () => {
     return(
         <Footer className="bg-black text-white pt-5 pb-70">
             <div className="container">
-                <Row>
+                <div>
                 <div className="col-lg-3 col-sm-3">
                     <Link to="/" className='fs-1 text-decoration-none text-white fw-bold'>Kk</Link>
                 </div>
@@ -63,7 +63,7 @@ const Footer = () => {
                     </div>
                     </div>
                 </div>
-                </Row>
+                </div>
             </div>
         </Footer>
     )

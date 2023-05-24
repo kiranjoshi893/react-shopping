@@ -24,8 +24,7 @@
     "reactstrap": "^9.1.9",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
-    "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.10"
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "env-cmd -f .env.dev react-scripts start",
@@ -41,7 +40,6 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
-    "jest": "^27.5.1",
     "json-server": "^0.17.3",
     "json-server-auth": "^2.1.0",
     "react-scripts": "latest"

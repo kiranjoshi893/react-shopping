@@ -6,7 +6,7 @@ import { BreadcrumbList, Loader } from '../../common/BreadcrumbList';
 import FilterComponent from '../../common/FilterComponent';
 import { getAllCategories, getAllProduct, getProductByfilter } from '../../services/Auth';
 import ProductList from '././ProductList';
-import {Row } from '../../common/StyleComponent';
+// import {Row } from '../../common/StyleComponent';
 
  const Products = (props) => {
     // const notify = () => toast("Wow so easy!");
@@ -93,12 +93,13 @@ import {Row } from '../../common/StyleComponent';
       /> */}
         <div className='container'>
             {getProductList.productListWait ? <Loader /> : ''}
-            <Row className='row'>
+            <div className='row'>
                 <div className='col-md-2'>
-                    <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} category={category} searchParams={searchParams} />
+                    <FilterComponent category={getDataFromStore.list} categoryState={state} getCategoryData={(data) => getCategoryData(data)} clearFilter={clearFilter} applyFilter={getResult} searchParams={searchParams} />
+                    {/* category={category} */}
                 </div>
                 <div className='col-md-10'>
-                <Row>
+                <div>
                     {getProductList?.productList?.map((data, index) => {
                         return (
                             <div className="col-md-3 mb-4 pb-3" key={index}>
@@ -106,9 +107,9 @@ import {Row } from '../../common/StyleComponent';
                             </div>
                         )
                     })}
-                    </Row>
+                    </div>
                 </div>
-            </Row>
+            </div>
         </div>
     </div>
  }

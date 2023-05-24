@@ -8,7 +8,7 @@ import HomeBanner from './HomeBanner'
 import HomeThreeCard from './HomeThreeCard'
 import { getAllCategories, getAllProduct} from '../../services/Auth'
 import ProductList from '../product/ProductList'
-import { Button, Heading } from '../../common/StyleComponent'
+// import { Button, Heading } from '../../common/StyleComponent'
 
 const Home = (props) => {
   const location = useLocation()
@@ -21,7 +21,7 @@ const Home = (props) => {
   },[])
   return (<>
     <BreadcrumbList url={location}/>
-    <Button className='btn btn-primary' primary>dasdasdsa</Button>
+    {/* <Button className='btn btn-primary' primary>dasdasdsa</Button> */}
     <>
       <HomeBanner/>
       <div className='container'>
